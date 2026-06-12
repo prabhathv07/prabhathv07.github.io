@@ -255,6 +255,8 @@ section { padding: 112px 52px; }
 
 .proj-result { display: inline-flex; align-items: center; gap: 5px; margin-top: 15px; font-size: 11px; padding: 4px 12px; border-radius: 980px; background: var(--accent-soft); color: var(--accent); border: 0.5px solid rgba(0,113,227,0.14); font-weight: 500; width: fit-content; }
 .proj-result.green { background: var(--green-soft); color: var(--green); border-color: rgba(26,122,66,0.14); }
+.proj-link { display:inline-flex; align-items:center; gap:5px; margin-top:14px; font-size:11px; color:var(--gray); text-decoration:none; border:0.5px solid var(--bg3); padding:6px 14px; border-radius:980px; transition:all 0.2s; width:fit-content; }
+.proj-link:hover { color:var(--black); border-color:rgba(0,0,0,0.2); }
 
 .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
 .proj-tag { font-size: 11px; padding: 4px 12px; border-radius: 980px; background: var(--bg2); color: var(--gray); border: 0.5px solid var(--bg3); }
@@ -386,7 +388,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
     <li><a href="#skills">Skills</a></li>
   </ul>
   <div class="nav-right">
-    <span class="nav-status">Available May 2026</span>
+    <span class="nav-status">Available Now</span>
     <a href="mailto:vipparthi.prabhathvinay23@gmail.com" class="nav-hire">Let's talk</a>
   </div>
 </nav>
@@ -395,7 +397,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
 <div class="hero">
   <div class="hero-badge">
     <div class="dot"></div>
-    Open to full-time opportunities · F-1 OPT · May 2026
+    Open to full-time opportunities · F-1 OPT · Available Now
   </div>
 
   <div class="hero-headline">
@@ -409,7 +411,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
   <div class="hero-divider"></div>
 
   <p class="hero-sub">
-    MS Data Science student at NJIT, graduating May 2026.
+    MS Data Science graduate from NJIT (May 2026).
     I build things that work — ML models, data pipelines, NLP systems —
     and I care deeply about understanding why they work.
   </p>
@@ -417,8 +419,8 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
   <div class="hero-pills">
     <span class="hero-pill">📍 Harrison, NJ</span>
     <span class="hero-pill">NJIT · MS Data Science · 2026</span>
-    <span class="hero-pill">F-1 · OPT Applied</span>
-    <span class="hero-pill">9 Projects</span>
+    <span class="hero-pill">F-1 · OPT Active</span>
+    <span class="hero-pill">10 Projects</span>
     <span class="hero-pill">5 Certifications</span>
   </div>
 
@@ -439,7 +441,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
 <div class="stats-strip">
   <div class="stats-inner">
     <div class="stat-item reveal">
-      <div class="stat-num">9</div>
+      <div class="stat-num">10</div>
       <div class="stat-label">Projects<br>Built</div>
     </div>
     <div class="stat-item reveal rd1">
@@ -472,7 +474,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
       <p class="sec-ey reveal">About</p>
       <h2 class="sec-title reveal rd1">Building systems that <em>think</em> and scale.</h2>
       <p class="about-body reveal rd2">
-        I'm <strong>Prabhath Vinay Vipparthi</strong>, completing my <strong>Master's in Data Science</strong> at NJIT (May 2026). I work across the full stack of data — from raw pipelines and feature engineering to training models and putting them into production.<br><br>
+        I'm <strong>Prabhath Vinay Vipparthi</strong>, a <strong>Master's in Data Science</strong> graduate from NJIT (May 2026). I work across the full stack of data — from raw pipelines and feature engineering to training models and putting them into production.<br><br>
         I've built NLP classification engines with human-in-the-loop workflows, implemented ML algorithms from scratch, trained LSTMs on clinical data, and processed 1.8 million records on distributed Hadoop clusters. I care about doing things properly: writing tests, understanding the math, and building systems that hold up.<br><br>
         I'm looking for a team where I can keep learning fast and contribute meaningful work from day one.
       </p>
@@ -480,7 +482,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="opt-icon">📋</div>
         <div class="opt-text">
           <strong>Work Authorization</strong><br>
-          F-1 visa · OPT application submitted · STEM-eligible · Authorized to work full-time in the United States from May 2026. No sponsorship required during the OPT period.
+          F-1 visa · OPT active · STEM-eligible · Authorized to work full-time in the United States. No sponsorship required during the OPT period.
         </div>
       </div>
     </div>
@@ -490,8 +492,8 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="edu-degree">Master of Science in Data Science<br>
           <span style="font-weight:300;font-size:14px;color:var(--light-gray);">Computational Track · Ying Wu College of Computing</span>
         </div>
-        <div class="edu-year">Expected May 2026 · Newark, NJ</div>
-        <span class="edu-badge">Current</span>
+        <div class="edu-year">May 2026 · Newark, NJ</div>
+        <span class="edu-badge">Graduated</span>
       </div>
       <div class="edu-card reveal rd2">
         <div class="edu-school">Lendi Institute of Engineering & Technology</div>
@@ -564,7 +566,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
       <p class="sec-ey reveal">Projects</p>
       <h2 class="sec-title reveal rd1">Things I've <em>built & explored.</em></h2>
       <div class="proj-filter reveal rd2">
-        <button class="pfb active" onclick="filterProj('all',this)">All (9)</button>
+        <button class="pfb active" onclick="filterProj('all',this)">All (10)</button>
         <button class="pfb" onclick="filterProj('ai',this)">AI & NLP</button>
         <button class="pfb" onclick="filterProj('ml',this)">Machine Learning</button>
         <button class="pfb" onclick="filterProj('data',this)">Data Engineering</button>
@@ -598,7 +600,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
             <div class="proj-pt"><div class="proj-pt-dot"></div><span>Three-stage validation: syntax → static analysis → LLM evaluation</span></div>
             <div class="proj-pt"><div class="proj-pt-dot"></div><span>30,000+ code samples from The Stack v2 processed for instruction-tuning</span></div>
           </div>
-          <a href="https://github.com/prabhathv07" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:28px;font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;border:0.5px solid rgba(255,255,255,0.14);padding:7px 16px;border-radius:980px;transition:all 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.75)';this.style.borderColor='rgba(255,255,255,0.35)'" onmouseout="this.style.color='rgba(255,255,255,0.4)';this.style.borderColor='rgba(255,255,255,0.14)'">
+          <a href="https://github.com/prabhathv07/StarCoder2-Self-Alignment-Pipeline" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:28px;font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;border:0.5px solid rgba(255,255,255,0.14);padding:7px 16px;border-radius:980px;transition:all 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.75)';this.style.borderColor='rgba(255,255,255,0.35)'" onmouseout="this.style.color='rgba(255,255,255,0.4)';this.style.borderColor='rgba(255,255,255,0.14)'">
             View on GitHub ↗
           </a>
         </div>
@@ -614,6 +616,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-tags">
           <span class="proj-tag">Python</span><span class="proj-tag">Random Forest</span><span class="proj-tag">LSTM</span><span class="proj-tag">TensorFlow</span><span class="proj-tag">10-Fold CV</span>
         </div>
+        <a href="https://github.com/prabhathv07/Heart_Failure_Prediction" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
       </div>
 
       <!-- 03 Loan Approval -->
@@ -626,6 +629,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-tags">
           <span class="proj-tag">Python</span><span class="proj-tag">SMOTE</span><span class="proj-tag">SHAP</span><span class="proj-tag">TensorFlow</span><span class="proj-tag">GridSearchCV</span>
         </div>
+        <a href="https://github.com/prabhathv07/Financial-Risk-Loan-Approval" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
       </div>
 
       <!-- 04 Logistic Regression from Scratch -->
@@ -638,6 +642,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-tags">
           <span class="proj-tag">Python</span><span class="proj-tag">NumPy</span><span class="proj-tag">Gradient Descent</span>
         </div>
+        <a href="https://github.com/prabhathv07/Data-Science-Projects" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
       </div>
 
       <!-- 05 Frequent Itemset Mining -->
@@ -650,6 +655,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-tags">
           <span class="proj-tag">Python</span><span class="proj-tag">mlxtend</span><span class="proj-tag">Apriori</span><span class="proj-tag">FP-Growth</span>
         </div>
+        <a href="https://github.com/prabhathv07/Frequent-Itemset-Mining" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
       </div>
 
       <!-- 06 Cluedo AI -->
@@ -662,6 +668,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-tags">
           <span class="proj-tag">Python</span><span class="proj-tag">OOP</span><span class="proj-tag">Knowledge Base</span><span class="proj-tag">Logical Inference</span>
         </div>
+        <a href="https://github.com/prabhathv07/Cluedo-AI-Logical-Deduction-Agent" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
       </div>
 
       <!-- 07 River Crossing -->
@@ -674,6 +681,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-tags">
           <span class="proj-tag">Python</span><span class="proj-tag">BFS</span><span class="proj-tag">DFS</span><span class="proj-tag">State Space Search</span>
         </div>
+        <a href="https://github.com/prabhathv07/Data-Science-Projects" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
       </div>
 
       <!-- 08 Hadoop -->
@@ -686,6 +694,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-tags">
           <span class="proj-tag">Hadoop</span><span class="proj-tag">MapReduce</span><span class="proj-tag">Java</span><span class="proj-tag">HDFS</span><span class="proj-tag">AWS EC2</span>
         </div>
+        <a href="https://github.com/prabhathv07/Amazon-Reviews-BigData-Hadoop" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
       </div>
 
       <!-- 09 User Management -->
@@ -698,6 +707,20 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-tags">
           <span class="proj-tag">FastAPI</span><span class="proj-tag">PostgreSQL</span><span class="proj-tag">Docker</span><span class="proj-tag">GitHub Actions</span><span class="proj-tag">Pytest</span>
         </div>
+        <a href="https://github.com/prabhathv07/user_management" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
+      </div>
+
+      <!-- 10 Crypto Hadoop -->
+      <div class="proj-card reveal rd1" data-cat="data">
+        <div class="proj-num">10</div>
+        <div class="proj-cat">Big Data · Distributed Systems · Finance</div>
+        <div class="proj-name">Cryptocurrency Market Analysis on Hadoop</div>
+        <div class="proj-desc">Built three distributed MapReduce jobs in Java to analyze 2 GB of historical OHLCV tick data across 100+ cryptocurrency pairs (Binance, Apr–Aug 2024) on a multi-node AWS EC2 cluster. Jobs surface volatility rankings, worst-performing assets by open-to-close change, and cumulative volume leaders with peak timestamps.</div>
+        <div class="proj-result green">100+ Crypto Pairs · 2 GB HDFS Dataset</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Java</span><span class="proj-tag">Hadoop</span><span class="proj-tag">MapReduce</span><span class="proj-tag">HDFS</span><span class="proj-tag">AWS EC2</span>
+        </div>
+        <a href="https://github.com/prabhathv07/crypto-hadoop-analysis" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
       </div>
 
     </div>
@@ -868,7 +891,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
   <p class="sec-ey contact-ey reveal">Let's connect</p>
   <h2 class="contact-title reveal rd1">Open to full-time <em>opportunities.</em></h2>
   <p class="contact-sub reveal rd2">Data Scientist or AI/ML Engineering roles — let's talk about what we can build together.</p>
-  <p class="contact-meta reveal rd3">Harrison, NJ · F-1 OPT · Available May 2026</p>
+  <p class="contact-meta reveal rd3">Harrison, NJ · F-1 OPT · Available Now</p>
   <div class="contact-links reveal rd4">
     <a href="mailto:vipparthi.prabhathvinay23@gmail.com" class="cl p">Send an email</a>
     <a href="https://www.linkedin.com/in/prabhath-vipparthi-90544b225" target="_blank" rel="noopener" class="cl s">LinkedIn ↗</a>
