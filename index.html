@@ -583,23 +583,23 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
           <div class="proj-num">01</div>
           <div class="proj-cat">AI · LLM · NLP</div>
           <div class="proj-name">StarCoder2 Self-Alignment Pipeline</div>
-          <div class="proj-desc">Adapted the StarCoder2 Self-Align pipeline from Python to TypeScript — building a custom Tree-sitter parser and redesigning data-loading modules to process 30,000+ code samples from The Stack v2 dataset. Designed a three-stage validation framework: syntax parsing, static analysis, and LLM-based evaluation. Optimized throughput using vLLM batched inference.</div>
+          <div class="proj-desc">Implemented the SelfOSSInstruct methodology from the StarCoder2 paper to generate TypeScript instruction-tuning datasets. Stage 1 extracts TypeScript functions from The Stack v2 using tree-sitter AST parsing and TypeScript compiler type-checking — filtering 30,000 raw files down to 5,791 quality seed functions. Stage 2 runs an S→C→I→R chain (Seed → Concepts → Instructions → Responses) via StarCoder2-3B. Stage 3 filters outputs using model-based quality assessment. Deployed on Google Colab T4 GPU with vLLM batched inference (batch size 32).</div>
           <div class="proj-tags">
             <span class="proj-tag">Python</span>
-            <span class="proj-tag">TypeScript</span>
-            <span class="proj-tag">Tree-sitter</span>
+            <span class="proj-tag">tree-sitter</span>
             <span class="proj-tag">vLLM</span>
             <span class="proj-tag">Hugging Face</span>
-            <span class="proj-tag">PyTorch</span>
+            <span class="proj-tag">StarCoder2</span>
+            <span class="proj-tag">Google Colab</span>
           </div>
         </div>
         <div>
-          <div class="proj-stat">86%</div>
-          <div class="proj-stat-lbl">Seed data quality improvement</div>
+          <div class="proj-stat">5,791</div>
+          <div class="proj-stat-lbl">Quality-validated TypeScript seed functions</div>
           <div class="proj-pts">
-            <div class="proj-pt"><div class="proj-pt-dot"></div><span>Custom Tree-sitter parser built in TypeScript from scratch — full pipeline migration</span></div>
-            <div class="proj-pt"><div class="proj-pt-dot"></div><span>Three-stage validation: syntax → static analysis → LLM evaluation</span></div>
-            <div class="proj-pt"><div class="proj-pt-dot"></div><span>30,000+ code samples from The Stack v2 processed for instruction-tuning</span></div>
+            <div class="proj-pt"><div class="proj-pt-dot"></div><span>30,000 raw files → 8,372 TypeScript functions → 5,791 seeds after return-filter + type-check</span></div>
+            <div class="proj-pt"><div class="proj-pt-dot"></div><span>S→C→I→R chain: 5,791 concept annotations and instructions generated, 448 response pairs completed</span></div>
+            <div class="proj-pt"><div class="proj-pt-dot"></div><span>StarCoder2-3B via vLLM (batch size 32) on Google Colab T4 GPU using HuggingFace Datasets + Arrow format</span></div>
           </div>
           <a href="https://github.com/prabhathv07/StarCoder2-Self-Alignment-Pipeline" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:28px;font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;border:0.5px solid rgba(255,255,255,0.14);padding:7px 16px;border-radius:980px;transition:all 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.75)';this.style.borderColor='rgba(255,255,255,0.35)'" onmouseout="this.style.color='rgba(255,255,255,0.4)';this.style.borderColor='rgba(255,255,255,0.14)'">
             View on GitHub ↗
@@ -612,8 +612,8 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-num">02</div>
         <div class="proj-cat">Machine Learning · Healthcare</div>
         <div class="proj-name">Heart Failure Prediction</div>
-        <div class="proj-desc">Compared Random Forest, LSTM, and KNN on 918 patient records using 10-fold cross-validation. Manually computed 15+ metrics per fold — accuracy, F1, TSS, HSS, Brier Score, and AUC. Random Forest achieved best overall performance.</div>
-        <div class="proj-result green">RF AUC 0.94 · 15+ Metrics Per Fold</div>
+        <div class="proj-desc">Compared Random Forest, LSTM, and KNN on 918 patient records (12 clinical features) using 10-fold cross-validation. Computed 15+ metrics per fold — accuracy, F1, TSS, HSS, Brier Score, and AUC. Random Forest achieved best performance: 86.8% accuracy, F1 0.883, and AUC 0.94 vs. LSTM at 84.2% and KNN at 71.0%.</div>
+        <div class="proj-result green">RF 86.8% Acc · AUC 0.94 · 15+ Metrics</div>
         <div class="proj-tags">
           <span class="proj-tag">Python</span><span class="proj-tag">Random Forest</span><span class="proj-tag">LSTM</span><span class="proj-tag">TensorFlow</span><span class="proj-tag">10-Fold CV</span>
         </div>
@@ -625,10 +625,10 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-num">03</div>
         <div class="proj-cat">Machine Learning · Finance</div>
         <div class="proj-name">Loan Approval Prediction</div>
-        <div class="proj-desc">End-to-end ML pipeline on 20,000 records with 36 features. Addressed class imbalance with SMOTE, compared 6 models using Grid Search CV, and applied SHAP for feature importance and model explainability.</div>
-        <div class="proj-result">6 Models · SHAP Explainability</div>
+        <div class="proj-desc">End-to-end ML pipeline on 20,000 loan applications with 36 features and severe class imbalance (76.1% rejected). Applied SMOTE on training data only to prevent leakage, compared 6 models — Logistic Regression, Decision Tree, Random Forest, SVM, KNN, and ANN — with GridSearchCV tuning, and applied SHAP to surface top predictors: CreditScore, AnnualIncome, and DebtToIncomeRatio.</div>
+        <div class="proj-result">6 Models · SHAP · GridSearchCV</div>
         <div class="proj-tags">
-          <span class="proj-tag">Python</span><span class="proj-tag">SMOTE</span><span class="proj-tag">SHAP</span><span class="proj-tag">TensorFlow</span><span class="proj-tag">GridSearchCV</span>
+          <span class="proj-tag">Python</span><span class="proj-tag">SMOTE</span><span class="proj-tag">SHAP</span><span class="proj-tag">TensorFlow</span><span class="proj-tag">GridSearchCV</span><span class="proj-tag">Scikit-learn</span>
         </div>
         <a href="https://github.com/prabhathv07/Financial-Risk-Loan-Approval" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
       </div>
@@ -664,10 +664,10 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-num">06</div>
         <div class="proj-cat">Big Data · Distributed Systems</div>
         <div class="proj-name">Amazon Reviews Big Data Analysis</div>
-        <div class="proj-desc">Built a 4-node Hadoop cluster on AWS EC2 with HDFS. Developed distributed MapReduce jobs in Java to parse TSV datasets and aggregate rating statistics across 1.8 million Amazon review records.</div>
-        <div class="proj-result green">1.8M Records · 4-Node Cluster</div>
+        <div class="proj-desc">Built a 4-node Hadoop cluster on AWS EC2 (1 NameNode + 3 DataNodes, Hadoop 2.6.5) with HDFS. Developed a MapReduce job in Java to parse a 1.2 GB TSV dataset of Amazon video game reviews and compute star-rating distribution across 1.78 million records. Optimized throughput by tuning HDFS block size from 64 MB to 128 MB.</div>
+        <div class="proj-result green">1.78M Records · 1.2 GB Dataset</div>
         <div class="proj-tags">
-          <span class="proj-tag">Hadoop</span><span class="proj-tag">MapReduce</span><span class="proj-tag">Java</span><span class="proj-tag">HDFS</span><span class="proj-tag">AWS EC2</span>
+          <span class="proj-tag">Hadoop 2.6.5</span><span class="proj-tag">MapReduce</span><span class="proj-tag">Java</span><span class="proj-tag">HDFS</span><span class="proj-tag">AWS EC2</span>
         </div>
         <a href="https://github.com/prabhathv07/Amazon-Reviews-BigData-Hadoop" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
       </div>
@@ -677,10 +677,10 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-num">07</div>
         <div class="proj-cat">Backend · DevOps · CI/CD</div>
         <div class="proj-name">User Management System</div>
-        <div class="proj-desc">FastAPI + PostgreSQL backend with profile completion tracking and admin-controlled status workflows. Diagnosed and resolved 5 critical production bugs and built a full CI/CD pipeline with GitHub Actions and Docker Hub deployment.</div>
-        <div class="proj-result">CI/CD · Docker · GitHub Actions</div>
+        <div class="proj-desc">FastAPI + PostgreSQL backend with JWT OAuth2 authentication, role-based access control (Admin, Manager, User), and profile completion tracking. Diagnosed and resolved 5 critical production bugs — DockerHub CI failures, unique constraint violations, routing 404s, nested transaction errors, and test mocking issues. Added 10 new edge-case tests (138 passing total) and built a full CI/CD pipeline with GitHub Actions and Docker.</div>
+        <div class="proj-result">138 Tests · JWT Auth · CI/CD</div>
         <div class="proj-tags">
-          <span class="proj-tag">FastAPI</span><span class="proj-tag">PostgreSQL</span><span class="proj-tag">Docker</span><span class="proj-tag">GitHub Actions</span><span class="proj-tag">Pytest</span>
+          <span class="proj-tag">FastAPI</span><span class="proj-tag">PostgreSQL</span><span class="proj-tag">Docker</span><span class="proj-tag">GitHub Actions</span><span class="proj-tag">SQLAlchemy</span><span class="proj-tag">Pytest</span>
         </div>
         <a href="https://github.com/prabhathv07/user_management" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
       </div>
