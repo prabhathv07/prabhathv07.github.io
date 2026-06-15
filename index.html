@@ -492,7 +492,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="edu-degree">Master of Science in Data Science<br>
           <span style="font-weight:300;font-size:14px;color:var(--light-gray);">Computational Track · Ying Wu College of Computing</span>
         </div>
-        <div class="edu-year">May 2026 · Newark, NJ</div>
+        <div class="edu-year">May 2026 · Newark, NJ · GPA 3.7</div>
         <span class="edu-badge">Graduated</span>
       </div>
       <div class="edu-card reveal rd2">
@@ -529,15 +529,15 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
       <div class="exp-item reveal">
         <div class="exp-bar"></div>
         <div class="exp-meta">
-          <div class="exp-role">AI/ML Engineering Intern</div>
-          <div class="exp-company">NJIT – The Learning & Development Initiative (LDI)</div>
-          <span class="exp-tag">May 2026</span>
+          <div class="exp-role">Graduate Data Science Capstone</div>
+          <div class="exp-company">NJIT – Learning & Development Initiative (LDI)</div>
+          <span class="exp-tag">Jan – May 2026</span>
         </div>
         <ul class="exp-bullets">
-          <li>Engineered a production AI-assisted digital badge classification platform using FastAPI, React (Vite + Tailwind CSS), spaCy, and SQLite — operationalizing NJIT's institutional badge taxonomy through deterministic rule-based workflows with <strong>100% classification accuracy</strong> across 20 real-world badges.</li>
-          <li>Designed a four-layer NLP pipeline — 130+ custom phrase patterns, 44 regex rules, Bloom's verb extraction, and metadata normalization — to extract classification signals from structured and unstructured badge data across three input formats (OBv3 JSON, guided forms, free text).</li>
-          <li>Built a deterministic classification engine with full rule traceability, 8-element plain-English explanations per output, governance logging, and human-in-the-loop override workflows requiring written justification — supporting auditable institutional decision-making.</li>
-          <li>Implemented automated validation and regression testing with <strong>351 test cases</strong> (100% pass rate) covering end-to-end classification logic, NLP extraction layers, taxonomy rule consistency, and all 7 end-to-end workflow scenarios.</li>
+          <li>Engineered a production AI-assisted digital badge classification system (FastAPI, React/Vite, spaCy, SQLite) that automates NJIT's institutional taxonomy classification across <strong>3 dimensions</strong> (category, type, cognitive level), achieving <strong>100% classification accuracy</strong> on 20 real-world badge submissions validated against ground-truth labels from 5 institutional units (LDI, OSIL, Makerspace, NCE, OGI).</li>
+          <li>Designed a 4-layer NLP extraction pipeline — 130+ lexicon phrase patterns, 44 regex rules, spaCy Bloom's taxonomy verb extraction, and an LLM stub — handling OBv3 JSON, guided forms, and free-text inputs with robust signal coverage across all badge description styles.</li>
+          <li>Built a deterministic 3-stage rule engine (19 rules: category → type → cognitive level) with full rule traceability, 8-element plain-English decision explanations per output, confidence scoring, immutable governance audit logs, and human-in-the-loop override workflows requiring written justification.</li>
+          <li>Delivered a <strong>351-test</strong> automated validation suite (100% pass rate) across unit, integration, and 7 end-to-end workflow scenarios covering NLP extraction accuracy, full taxonomy classification consistency, and metadata ingestion correctness.</li>
         </ul>
         <a href="https://github.com/prabhathv07/AI_Digital_Badge_Classification" target="_blank" rel="noopener" class="proj-link" style="margin-top:20px;">View Repository ↗</a>
       </div>
@@ -545,9 +545,9 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
       <div class="exp-item reveal rd1">
         <div class="exp-bar"></div>
         <div class="exp-meta">
-          <div class="exp-role">BME Office Assistant</div>
+          <div class="exp-role">Office Assistant</div>
           <div class="exp-company">New Jersey Institute of Technology</div>
-          <span class="exp-tag">May 2026</span>
+          <span class="exp-tag">Sep 2025 – May 2026</span>
         </div>
         <ul class="exp-bullets">
           <li>Developed and maintained a web-based study room booking system to streamline scheduling workflows and improve internal resource management.</li>
@@ -612,10 +612,10 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.22); }
         <div class="proj-num">02</div>
         <div class="proj-cat">Machine Learning · Healthcare</div>
         <div class="proj-name">Heart Failure Prediction</div>
-        <div class="proj-desc">Compared Random Forest, LSTM, and KNN on 918 patient records (12 clinical features) using 10-fold cross-validation. Computed 15+ metrics per fold — accuracy, F1, TSS, HSS, Brier Score, and AUC. Random Forest achieved best performance: 86.8% accuracy, F1 0.883, and AUC 0.94 vs. LSTM at 84.2% and KNN at 71.0%.</div>
-        <div class="proj-result green">RF 86.8% Acc · AUC 0.94 · 15+ Metrics</div>
+        <div class="proj-desc">Built an end-to-end binary classification pipeline on 918 patient records (12 clinical features) using 10-fold stratified CV. Benchmarked Random Forest, LSTM, and KNN across 15+ metrics per fold (Accuracy, F1, AUC-ROC, Brier Score, TSS, HSS) — RF achieved 86.8% accuracy, F1 0.883, AUC 0.94; LSTM 84.2%; KNN 71.0%. Applied SHAP for instance-level feature attribution, surfacing ejection fraction, serum creatinine, and age as dominant clinical predictors.</div>
+        <div class="proj-result green">RF 86.8% Acc · AUC 0.94 · SHAP Explainability</div>
         <div class="proj-tags">
-          <span class="proj-tag">Python</span><span class="proj-tag">Random Forest</span><span class="proj-tag">LSTM</span><span class="proj-tag">TensorFlow</span><span class="proj-tag">10-Fold CV</span>
+          <span class="proj-tag">Python</span><span class="proj-tag">Random Forest</span><span class="proj-tag">LSTM</span><span class="proj-tag">TensorFlow</span><span class="proj-tag">SHAP</span><span class="proj-tag">10-Fold CV</span>
         </div>
         <a href="https://github.com/prabhathv07/Heart_Failure_Prediction" target="_blank" rel="noopener" class="proj-link">View on GitHub ↗</a>
       </div>
