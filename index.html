@@ -813,6 +813,35 @@ section { padding: clamp(72px, 11vw, 132px) var(--gutter); position: relative; }
   font-size: 12.5px; line-height: 1.7;
   color: var(--fg-2);
 }
+
+.proj-image,
+.feat-image {
+  margin-top: 20px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+  background: var(--canvas-2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+  aspect-ratio: 16 / 10;
+}
+.proj-image img,
+.feat-image img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+  transition: transform 0.5s var(--ease);
+}
+.proj-card:hover .proj-image img,
+.feat-card:hover .feat-image img {
+  transform: scale(1.03);
+}
+.proj-image::after,
+.feat-image::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(15, 13, 11, 0.4) 100%);
+  pointer-events: none;
+}
 .feat-preview-head {
   display: flex; align-items: center; gap: 8px;
   margin-bottom: 12px;
@@ -1361,7 +1390,7 @@ footer {
   <div class="hero-inner">
     <div class="hero-status" role="status">
       <span class="dot" aria-hidden="true"></span>
-      <span>Available now · Open to full-time roles</span>
+      <span>Graduated May 2026 · Available immediately</span>
     </div>
 
     <div class="hero-name">— Prabhath Vinay Vipparthi</div>
@@ -1487,8 +1516,8 @@ footer {
         <div class="edu-title">Master of Science in Data Science</div>
         <div class="edu-meta">New Jersey Institute of Technology · Ying Wu College of Computing</div>
         <div class="edu-line">
-          <span>May 2026 · Newark, NJ · GPA 3.7</span>
-          <span class="edu-badge">Graduated</span>
+          <span>Graduated May 2026 · Newark, NJ · GPA 3.7</span>
+          <span class="edu-badge">Class of 2026</span>
         </div>
       </div>
 
@@ -1497,8 +1526,8 @@ footer {
         <div class="edu-title">Bachelor of Technology, EEE</div>
         <div class="edu-meta">Lendi Institute of Engineering & Technology</div>
         <div class="edu-line">
-          <span>April 2023 · Andhra Pradesh, India</span>
-          <span class="edu-badge">Graduated</span>
+          <span>Graduated April 2023 · Andhra Pradesh, India</span>
+          <span class="edu-badge">Class of 2023</span>
         </div>
       </div>
 
@@ -1606,6 +1635,9 @@ footer {
           A retrieval-augmented Q&amp;A layer answers plain-English questions over the entire
           briefing history with inline date citations.
         </p>
+        <div class="feat-image" id="finsight-image" aria-hidden="true">
+          <img src="assets/finsight-preview.png" alt="FinSight live dashboard preview" loading="lazy" onerror="this.closest('.feat-image').style.display='none'">
+        </div>
         <div class="feat-preview" aria-label="FinSight RAG endpoint example">
           <div class="feat-preview-head">POST /ask · live</div>
           <div class="feat-preview-query">"How did the tech sector look pre-market this week?"</div>
@@ -1718,6 +1750,9 @@ footer {
           daily Airflow DAG. Built on a DuckDB warehouse with a Streamlit dashboard layer.
           Manhattan accounts for 75% of revenue ($111.9M of $149.1M total).
         </p>
+        <div class="proj-image" aria-hidden="true">
+          <img src="assets/nyc-taxi-preview.png" alt="NYC Taxi Streamlit dashboard preview" loading="lazy" onerror="this.closest('.proj-image').style.display='none'">
+        </div>
         <div class="proj-metric success">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           5,443,386 clean trips · 23 dq tests passing
