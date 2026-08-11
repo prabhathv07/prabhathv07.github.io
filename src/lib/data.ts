@@ -389,9 +389,4 @@ export const certifications: Certification[] = [
     verify:
       "https://smartinternz.com/internships/salesforce_certificates/9d201c59e6aa7ee34e3f1e6e95669d02",
   },
-  {
-    title: "Palo Alto Networks Cybersecurity Virtual Internship",
-    issuer: "EduSkills · AICTE",
-    date: "Mar — May 2022",
-  },
 ];
