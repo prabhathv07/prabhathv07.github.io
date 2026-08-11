@@ -337,6 +337,32 @@ export type Certification = {
 
 export const certifications: Certification[] = [
   {
+    title: "AI Fluency for Builders",
+    issuer: "Anthropic Education",
+    date: "Jul 2026",
+    verify: "https://verify.skilljar.com/c/v4retfah555v",
+    description:
+      "Covers how to design and build production-ready systems using Claude — prompt engineering, tool use, multi-step pipelines, and responsible deployment patterns.",
+    featured: true,
+  },
+  {
+    title: "Introduction to Agent Skills",
+    issuer: "Anthropic Education",
+    date: "Jul 2026",
+    verify: "https://verify.skilljar.com/c/w7htfdpog5w3",
+    description:
+      "Hands-on course covering agentic AI design patterns, tool-calling, memory management, and orchestrating multi-step Claude agent workflows.",
+    featured: true,
+  },
+  {
+    title: "AI Fluency: Framework & Foundations",
+    issuer: "Anthropic Education",
+    date: "Jul 2026",
+    verify: "https://verify.skilljar.com/c/dkrh6ss5mx5b",
+    description:
+      "Core conceptual framework for understanding large language models, their capabilities and limitations, safety considerations, and effective evaluation strategies.",
+  },
+  {
     title: "Supervised Machine Learning: Regression and Classification",
     issuer: "DeepLearning.AI · Stanford · Andrew Ng",
     date: "Feb 2025 · Coursera",
