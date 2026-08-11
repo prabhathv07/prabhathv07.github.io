@@ -320,7 +320,7 @@ export const education = [
   },
   {
     degree: "Bachelor of Technology, Electrical & Electronics Engineering",
-    school: "Lendi Institute of Engineering & Technology",
+    school: "Jawaharlal Nehru Technological University, Kakinada (JNTUK)",
     period: "Graduated April 2023 · Andhra Pradesh, India",
     detail: "Class of 2023",
   },
