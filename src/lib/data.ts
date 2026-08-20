@@ -60,7 +60,7 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
-    title: "Graduate Data Science Capstone",
+    title: "AI Engineer — Graduate Capstone",
     company: "NJIT — Learning & Development Initiative (LDI)",
     period: "Jan — May 2026",
     location: "Newark, NJ",
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     category: "LLM Alignment",
     tag: "Featured · Research",
     description:
-      "Implemented the SelfOSSInstruct methodology from the StarCoder2 paper to generate a TypeScript instruction-tuning dataset. Extracted functions from The Stack v2 using tree-sitter AST parsing and TypeScript compiler type-checking, then ran an S→C→I→R chain (Seed → Concepts → Instructions → Responses) via StarCoder2-3B on a T4 GPU. Filtered final outputs with model-based quality scoring.",
+      "Implemented the SelfOSSInstruct methodology from the StarCoder2 paper to generate a TypeScript instruction-tuning dataset. Extracted functions from The Stack v2 using tree-sitter AST parsing and TypeScript compiler type-checking, then ran an S→C→I→R chain (Seed → Concepts → Instructions → Responses) via StarCoder2-3B on a T4 GPU. Produced 448 complete instruction-response pairs from 5,791 type-checked seeds. Filtered final outputs with model-based quality scoring.",
     stack: [
       "vLLM",
       "Hugging Face",
@@ -141,10 +141,10 @@ export const projects: Project[] = [
     metrics: [
       { label: "Quality seeds", value: "5,791" },
       { label: "Raw files", value: "30,000" },
+      { label: "Pairs", value: "448" },
       { label: "Inference", value: "vLLM · bs 32" },
-      { label: "Hardware", value: "Colab T4" },
     ],
-    footer: "30k files → 5,791 seeds",
+    footer: "30k files → 5,791 seeds → 448 pairs",
     github: "https://github.com/prabhathv07/StarCoder2-Self-Alignment-Pipeline",
     featured: true,
   },
