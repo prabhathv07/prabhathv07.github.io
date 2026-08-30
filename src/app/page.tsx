@@ -1,6 +1,5 @@
+import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
-import Marquee from "@/components/Marquee";
 import Manifesto from "@/components/Manifesto";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
@@ -16,10 +15,9 @@ export default function Home() {
     <>
       <ProgressIndicator />
       <CommandPalette />
-      <main className="flex-1">
+      <Nav />
+      <main className="flex-1 pt-14">
         <Hero />
-        <Stats />
-        <Marquee />
         <Manifesto />
         <Projects />
         <Experience />

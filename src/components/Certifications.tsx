@@ -12,89 +12,53 @@ export default function Certifications() {
   const others   = certifications.filter((c) => !c.featured);
 
   return (
-    <section id="certifications" className="border-t border-[color:var(--border-strong)] py-20 md:py-28">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <section id="certifications" className="py-20 md:py-28 border-t border-[color:var(--border)]">
+      <div className="max-w-6xl mx-auto px-6 md:px-10">
 
         <BlurFade delay={0.05} inView>
-          <div className="mb-10 flex items-center gap-3 text-[10px] font-mono tracking-[0.3em] uppercase text-[color:var(--muted)]">
-            <span>Certifications</span>
-            <span className="flex-1 h-px bg-[color:var(--border)]" />
+          <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-[color:var(--muted)] mb-4">
+            Certifications
           </div>
-          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.9] text-[color:var(--fg)] mb-16">
-            Validated <em className="italic text-[color:var(--fg-dim)]">credentials</em>
+          <h2 className="font-display font-semibold text-3xl md:text-4xl text-[color:var(--fg)] leading-tight mb-12 md:mb-14">
+            Credentials & Training
           </h2>
         </BlurFade>
 
         {/* Featured certs */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-          {featured.map((cert, i) => (
-            <BlurFade key={cert.title} delay={0.06 + i * 0.06} inView>
-              <motion.div
-                whileHover={{ y: -3, transition: { duration: 0.25, ease } }}
-                className="border border-[color:var(--border)] hover:border-[color:var(--border-strong)] rounded-2xl p-6 md:p-7 bg-[color:var(--bg-card)] transition-colors flex flex-col h-full"
-              >
-                <div className="text-[9px] font-mono tracking-[0.28em] uppercase text-[color:var(--accent)] mb-3">
-                  Featured
-                </div>
-                <h3 className="font-display text-xl md:text-2xl text-[color:var(--fg)] leading-tight mb-2">
-                  {cert.title}
-                </h3>
-                <div className="text-xs text-[color:var(--fg-dim)] mb-3">{cert.issuer}</div>
-                {cert.description && (
-                  <p className="text-sm leading-relaxed text-[color:var(--fg-dim)] mb-5 flex-1">
-                    {cert.description.slice(0, 150)}{cert.description.length > 150 ? "…" : ""}
-                  </p>
-                )}
-                <div className="mt-auto flex items-center justify-between pt-4 border-t border-[color:var(--border)]">
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[color:var(--muted)]">
-                    {cert.date}
-                  </span>
-                  {cert.verify && (
-                    <a
-                      href={cert.verify}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      data-cursor-label="Verify"
-                      className="inline-flex items-center gap-1 text-[10px] font-mono tracking-widest uppercase text-[color:var(--fg-dim)] hover:text-[color:var(--fg)] transition-colors"
-                    >
-                      Verify <ArrowUpRight size={10} />
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            </BlurFade>
-          ))}
-        </div>
-
-        {/* Others: compact list */}
-        <BlurFade delay={0.1} inView>
-          <div className="border-t border-[color:var(--border)] divide-y divide-[color:var(--border)]">
-            {others.map((cert, i) => (
+        <BlurFade delay={0.08} inView>
+          <div className="grid md:grid-cols-3 gap-4 mb-8">
+            {featured.map((cert, i) => (
               <motion.div
                 key={cert.title}
-                initial={{ opacity: 0, x: -8 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -2 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, ease, delay: 0.04 + i * 0.04 }}
-                className="flex items-center justify-between py-4 gap-4 group hover:bg-[color:var(--bg-elevated)] transition-colors px-2 -mx-2 rounded-lg"
+                transition={{ duration: 0.4, ease, delay: 0.05 + i * 0.06 }}
+                className="rounded-xl border border-[color:var(--border)] bg-[color:var(--bg-card)] p-5 md:p-6 flex flex-col hover:border-[color:var(--border-strong)] hover:shadow-[var(--shadow)] transition-all"
+                style={{ boxShadow: "var(--shadow-sm)" }}
               >
-                <div className="flex-1 min-w-0">
-                  <span className="text-sm text-[color:var(--fg)] group-hover:text-[color:var(--fg)] transition-colors">
-                    {cert.title}
-                  </span>
-                  <span className="text-xs text-[color:var(--muted)] ml-3 font-mono">{cert.issuer}</span>
+                <div className="text-[10px] font-mono uppercase tracking-wider text-[color:var(--accent)] mb-3">
+                  {cert.issuer}
                 </div>
-                <div className="flex items-center gap-4 flex-shrink-0">
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[color:var(--muted)] hidden sm:block">
-                    {cert.date}
-                  </span>
+                <h3 className="font-semibold text-sm text-[color:var(--fg)] leading-snug mb-2 flex-1">
+                  {cert.title}
+                </h3>
+                {cert.description && (
+                  <p className="text-xs text-[color:var(--fg-dim)] leading-[1.6] mb-4">
+                    {cert.description.slice(0, 120)}{cert.description.length > 120 ? "…" : ""}
+                  </p>
+                )}
+                <div className="flex items-center justify-between pt-3 border-t border-[color:var(--border)] mt-auto">
+                  <span className="text-[10px] font-mono text-[color:var(--muted)]">{cert.date}</span>
                   {cert.verify && (
                     <a
                       href={cert.verify}
                       target="_blank"
                       rel="noopener noreferrer"
                       data-cursor-label="Verify"
-                      className="inline-flex items-center gap-1 text-[10px] font-mono tracking-widest uppercase text-[color:var(--fg-dim)] hover:text-[color:var(--fg)] transition-colors"
+                      aria-label={`Verify ${cert.title} certificate`}
+                      className="inline-flex items-center gap-1 text-[10px] font-mono text-[color:var(--fg-dim)] hover:text-[color:var(--accent)] transition-colors"
                     >
                       Verify <ArrowUpRight size={10} />
                     </a>
@@ -104,6 +68,45 @@ export default function Certifications() {
             ))}
           </div>
         </BlurFade>
+
+        {/* Others: compact list */}
+        <BlurFade delay={0.12} inView>
+          <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--bg-card)] divide-y divide-[color:var(--border)] overflow-hidden">
+            {others.map((cert, i) => (
+              <motion.div
+                key={cert.title}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, ease, delay: 0.03 + i * 0.04 }}
+                className="flex items-center justify-between px-5 py-3.5 gap-4 hover:bg-[color:var(--bg-elevated)] transition-colors group"
+              >
+                <div className="flex-1 min-w-0">
+                  <span className="text-sm text-[color:var(--fg)] font-medium">{cert.title}</span>
+                  <span className="text-xs text-[color:var(--muted)] ml-2">{cert.issuer}</span>
+                </div>
+                <div className="flex items-center gap-4 flex-shrink-0">
+                  <span className="text-[10px] font-mono text-[color:var(--muted)] hidden sm:block">
+                    {cert.date}
+                  </span>
+                  {cert.verify && (
+                    <a
+                      href={cert.verify}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-cursor-label="Verify"
+                      aria-label={`Verify ${cert.title}`}
+                      className="inline-flex items-center gap-1 text-[10px] font-mono text-[color:var(--fg-dim)] hover:text-[color:var(--accent)] transition-colors"
+                    >
+                      Verify <ArrowUpRight size={10} />
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </BlurFade>
+
       </div>
     </section>
   );

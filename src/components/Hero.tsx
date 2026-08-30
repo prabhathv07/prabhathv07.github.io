@@ -1,187 +1,121 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { personal } from "@/lib/data";
-import { MagneticButton } from "@/components/MagneticButton";
-import ThemeToggle from "@/components/ThemeToggle";
-import { ArrowUpRight, ArrowDown } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
+import { personal, stats } from "@/lib/data";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const navLinks = [
-  { href: "#work",       label: "Work"       },
-  { href: "#about",      label: "About"      },
-  { href: "#skills",     label: "Stack"      },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact",    label: "Contact"    },
-];
-
 export default function Hero() {
-  const { scrollYProgress } = useScroll();
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const heroY       = useTransform(scrollYProgress, [0, 0.2], [0, -40]);
-
   return (
-    <section id="top" className="relative min-h-screen w-full flex flex-col overflow-hidden">
-      {/* Subtle ambient — hero only, very restrained */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="blob top-[20%] left-[10%] w-[500px] h-[500px] bg-violet-700/10 float-slow" />
-        <div className="blob bottom-[15%] right-[8%] w-[420px] h-[420px] bg-cyan-600/7" />
-      </div>
+    <section id="top" className="min-h-[calc(100dvh-3.5rem)] flex flex-col justify-between">
+      {/* ── Main content ──────────────────────────────────────── */}
+      <div className="flex-1 flex flex-col justify-center max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24 w-full">
 
-      {/* ── Header ─────────────────────────────────────────────────── */}
-      <motion.header
-        initial={{ opacity: 0, y: -12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease, delay: 0.05 }}
-        className="relative z-20 flex items-center justify-between px-6 md:px-10 pt-6 md:pt-8"
-      >
-        <a
-          href={`mailto:${personal.email}`}
-          data-cursor-label="Email"
-          className="inline-flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase font-mono text-[color:var(--fg-dim)] hover:text-[color:var(--fg)] transition-colors"
+        {/* Available badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease }}
+          className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-[color:var(--fg-dim)] border border-[color:var(--border)] bg-[color:var(--bg-card)] rounded-full px-3 py-1.5 w-fit"
+          style={{ boxShadow: "var(--shadow-xs)" }}
         >
           <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75 animate-ping" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
           </span>
-          Available for work
-        </a>
-
-        <nav className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="px-3.5 py-1.5 text-[12px] font-mono tracking-wide text-[color:var(--fg-dim)] hover:text-[color:var(--fg)] transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-3">
-          <ThemeToggle />
-          <MagneticButton
-            as="a"
-            href={personal.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cursor-label="Download"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-[color:var(--border-strong)] text-[11px] tracking-[0.15em] uppercase font-mono text-[color:var(--fg)] hover:bg-[color:var(--bg-elevated)] transition-colors"
-          >
-            Resume
-            <ArrowUpRight size={10} />
-          </MagneticButton>
-        </div>
-      </motion.header>
-
-      {/* ── Main content ─────────────────────────────────────────────── */}
-      <motion.div
-        style={{ opacity: heroOpacity, y: heroY }}
-        className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-10 max-w-7xl mx-auto w-full"
-      >
-        {/* Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, ease, delay: 0.2 }}
-          className="mb-8 flex items-center gap-3 text-[10px] md:text-[11px] tracking-[0.3em] uppercase font-mono text-[color:var(--fg-dim)]"
-        >
-          <span>Data Scientist</span>
-          <span className="w-6 h-px bg-[color:var(--border-strong)]" />
-          <span>AI Engineer</span>
-          <span className="w-6 h-px bg-[color:var(--border-strong)]" />
-          <span>Scale AI · NJIT MS &apos;26</span>
+          Available for full-time opportunities · Anywhere in the US
         </motion.div>
 
-        {/* Name block with ruled lines */}
-        <div className="border-t border-[color:var(--border-strong)]">
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, ease, delay: 0.3 }}
-            className="font-display text-[clamp(3.2rem,11.5vw,13.5rem)] leading-[0.88] text-[color:var(--fg)] py-4 md:py-6 select-none"
-          >
-            Prabhath
-          </motion.h1>
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, ease, delay: 0.42 }}
-            className="font-display italic text-[clamp(3.2rem,11.5vw,13.5rem)] leading-[0.88] text-[color:var(--fg-dim)] pb-4 md:pb-6 select-none"
-          >
-            Vipparthi
-          </motion.h1>
-        </div>
-        <div className="border-b border-[color:var(--border-strong)] mb-8 md:mb-10" />
-
-        {/* Tagline + CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
+        {/* Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease, delay: 0.6 }}
-          className="flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+          transition={{ duration: 0.65, ease, delay: 0.08 }}
+          className="font-display font-semibold text-[clamp(2.6rem,7vw,5.5rem)] leading-[1.04] text-[color:var(--fg)] mb-3"
         >
-          <p className="text-sm md:text-base text-[color:var(--fg-dim)] max-w-lg leading-relaxed">
-            4 years building predictive models, NLP systems, and production ML pipelines — at{" "}
-            <span className="text-[color:var(--fg)]">Scale AI</span> and{" "}
-            <span className="text-[color:var(--fg)]">HCL Tech</span>.
-            MS Data Science, NJIT (GPA 3.7).
-          </p>
+          Data Scientist
+          <br />
+          <span className="text-[color:var(--accent)]">&</span> AI Engineer.
+        </motion.h1>
+
+        {/* Name */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease, delay: 0.2 }}
+          className="text-lg font-medium text-[color:var(--fg-dim)] mb-8"
+        >
+          Prabhath Vipparthi
+        </motion.p>
+
+        {/* Bio + CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease, delay: 0.28 }}
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-8"
+        >
+          <div className="max-w-xl space-y-3">
+            <p className="text-base text-[color:var(--fg-dim)] leading-[1.65]">
+              4 years building production ML systems, NLP pipelines, and RAG platforms at{" "}
+              <span className="text-[color:var(--fg)] font-medium">Scale AI</span> and{" "}
+              <span className="text-[color:var(--fg)] font-medium">HCL Tech</span>.{" "}
+              MS Data Science, NJIT (GPA 3.7, May 2026).
+            </p>
+            <div className="flex items-center gap-1.5 text-xs text-[color:var(--muted)]">
+              <MapPin size={11} />
+              Harrison, NJ (NYC metro) · Open to relocation anywhere in the US
+            </div>
+          </div>
 
           <div className="flex items-center gap-3 flex-shrink-0">
-            <MagneticButton
-              as="a"
+            <a
               href="#work"
               data-cursor-label="Work"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[color:var(--fg)] text-[color:var(--bg)] text-[11px] tracking-[0.18em] uppercase font-mono hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[color:var(--accent)] text-white text-sm font-medium hover:opacity-90 transition-opacity"
             >
-              View Work
-              <ArrowDown size={11} />
-            </MagneticButton>
-            <MagneticButton
-              as="a"
+              View Work <ArrowRight size={13} />
+            </a>
+            <a
               href={personal.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor-label="LinkedIn"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[color:var(--border-strong)] text-[11px] tracking-[0.18em] uppercase font-mono text-[color:var(--fg-dim)] hover:text-[color:var(--fg)] hover:border-[color:var(--fg-dim)] transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[color:var(--border-strong)] text-sm text-[color:var(--fg-dim)] hover:text-[color:var(--fg)] hover:border-[color:var(--border-strong)] bg-[color:var(--bg-card)] transition-all"
+              style={{ boxShadow: "var(--shadow-xs)" }}
             >
-              LinkedIn
-              <ArrowUpRight size={11} />
-            </MagneticButton>
+              LinkedIn <ArrowUpRight size={12} />
+            </a>
           </div>
         </motion.div>
+      </div>
 
-        {/* ⌘K hint */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.2, duration: 1 }}
-          className="mt-10 hidden md:flex items-center gap-1.5 text-[10px] font-mono tracking-widest text-[color:var(--muted)]"
-        >
-          <kbd className="px-1.5 py-0.5 border border-[color:var(--border-strong)] rounded text-[9px]">⌘</kbd>
-          <kbd className="px-1.5 py-0.5 border border-[color:var(--border-strong)] rounded text-[9px]">K</kbd>
-          <span className="ml-1">quick nav</span>
-        </motion.div>
-      </motion.div>
-
-      {/* ── Scroll indicator ──────────────────────────────────────────── */}
+      {/* ── Stats strip ───────────────────────────────────────── */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.8 }}
-        className="relative z-10 px-6 md:px-10 pb-8 md:pb-10 flex justify-end"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease, delay: 0.45 }}
+        className="max-w-6xl mx-auto px-6 md:px-10 pb-10 md:pb-14 w-full"
       >
-        <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2 text-[color:var(--muted)]"
+        <div
+          className="grid grid-cols-2 sm:grid-cols-4 rounded-xl overflow-hidden border border-[color:var(--border)]"
+          style={{ boxShadow: "var(--shadow-sm)" }}
         >
-          <ArrowDown size={14} />
-          <span className="text-[9px] font-mono tracking-[0.3em] uppercase">scroll</span>
-        </motion.div>
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className={`bg-[color:var(--bg-card)] px-6 py-5 flex flex-col gap-1 ${
+                i < stats.length - 1 ? "border-r border-[color:var(--border)]" : ""
+              }`}
+            >
+              <span className="font-display font-semibold text-2xl md:text-3xl text-[color:var(--fg)]">
+                {s.value}
+              </span>
+              <span className="text-xs text-[color:var(--muted)] leading-snug">{s.label}</span>
+            </div>
+          ))}
+        </div>
       </motion.div>
     </section>
   );

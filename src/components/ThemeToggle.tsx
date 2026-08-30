@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("theme");
@@ -26,21 +25,10 @@ export default function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-all"
       data-cursor-label={isDark ? "Light" : "Dark"}
+      className="w-8 h-8 rounded-lg border border-[color:var(--border-strong)] flex items-center justify-center text-[color:var(--fg-dim)] hover:text-[color:var(--fg)] hover:bg-[color:var(--bg-elevated)] transition-all"
     >
-      <motion.div
-        key={isDark ? "moon" : "sun"}
-        initial={{ rotate: -30, opacity: 0, scale: 0.7 }}
-        animate={{ rotate: 0, opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-      >
-        {isDark ? (
-          <Sun size={14} className="text-white/70" />
-        ) : (
-          <Moon size={14} className="text-black/70" />
-        )}
-      </motion.div>
+      {isDark ? <Sun size={14} /> : <Moon size={14} />}
     </button>
   );
 }

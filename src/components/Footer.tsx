@@ -4,23 +4,22 @@ import { personal } from "@/lib/data";
 import { ArrowUpRight } from "lucide-react";
 
 const links = [
-  { label: "GitHub",   href: personal.github,                    external: true  },
-  { label: "LinkedIn", href: personal.linkedin,                   external: true  },
-  { label: "Email",    href: `mailto:${personal.email}`,          external: false },
-  { label: "Resume",   href: personal.resume,                     external: true  },
+  { label: "GitHub",   href: personal.github,                   external: true  },
+  { label: "LinkedIn", href: personal.linkedin,                  external: true  },
+  { label: "Email",    href: `mailto:${personal.email}`,         external: false },
+  { label: "Resume",   href: personal.resume,                    external: true  },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[color:var(--border-strong)] py-8 md:py-10">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-wrap items-center justify-between gap-5">
-
-        <div className="space-y-1">
-          <div className="text-[10px] font-mono tracking-[0.28em] uppercase text-[color:var(--muted)]">
+    <footer className="border-t border-[color:var(--border)] py-8">
+      <div className="max-w-6xl mx-auto px-6 md:px-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+        <div className="space-y-0.5">
+          <div className="text-xs font-medium text-[color:var(--fg-dim)]">
             © {new Date().getFullYear()} {personal.name}
           </div>
-          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-[color:var(--muted)]">
-            Data Scientist · AI Engineer · MS NJIT
+          <div className="text-[11px] text-[color:var(--muted)]">
+            Data Scientist · AI Engineer · NJIT MS 2026
           </div>
         </div>
 
@@ -32,7 +31,7 @@ export default function Footer() {
               target={l.external ? "_blank" : undefined}
               rel={l.external ? "noopener noreferrer" : undefined}
               data-cursor-label={l.label}
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[10px] font-mono tracking-widest uppercase text-[color:var(--muted)] hover:text-[color:var(--fg)] hover:bg-[color:var(--bg-elevated)] transition-all"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-xs text-[color:var(--muted)] hover:text-[color:var(--fg)] hover:bg-[color:var(--bg-elevated)] transition-all"
             >
               {l.label}
               {l.external && <ArrowUpRight size={9} />}
@@ -42,7 +41,7 @@ export default function Footer() {
 
         <a
           href="#top"
-          className="text-[10px] font-mono tracking-[0.28em] uppercase text-[color:var(--muted)] hover:text-[color:var(--fg)] transition-colors"
+          className="text-[11px] font-mono text-[color:var(--muted)] hover:text-[color:var(--fg)] transition-colors"
         >
           Back to top ↑
         </a>
