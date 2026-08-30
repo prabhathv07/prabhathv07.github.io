@@ -2,9 +2,8 @@ export const personal = {
   name: "Prabhath Vinay Vipparthi",
   firstName: "Prabhath",
   lastName: "Vipparthi",
-  role: "Data Scientist",
-  tagline:
-    "Think in data. Ship systems that explain themselves.",
+  role: "Data Scientist & AI Engineer",
+  tagline: "Think in data. Ship systems that explain themselves.",
   location: "Harrison, NJ",
   email: "vipparthi.prabhathvinay23@gmail.com",
   phone: "973-418-9427",
@@ -13,15 +12,14 @@ export const personal = {
   github: "https://github.com/prabhathv07",
   githubLabel: "@prabhathv07",
   resume: "/resume.pdf",
-  status:
-    "Available immediately · F-1 STEM OPT · No sponsorship required (3 yrs)",
+  status: "Available immediately · Onsite · Hybrid · Remote · Anywhere in the US",
 };
 
 export const heroBio =
-  "MS Data Science graduate from NJIT (GPA 3.7, May 2026). I work end-to-end — SQL analytics on real-world data, distributed pipelines over millions of rows, machine learning models with clear explanations, and production RAG systems. I care about the math, the tests, and shipping work that holds up.";
+  "Data Scientist and AI Engineer with 4 years of experience at Scale AI and HCL Tech. MS Data Science, NJIT (GPA 3.7, May 2026). I work end-to-end — production ML pipelines, NLP systems, RAG over pgvector, distributed data engineering over millions of rows, and models with clear SHAP explanations. I care about the math, the tests, and shipping work that holds up.";
 
 export const heroNote =
-  "Actively seeking full-time Data Scientist roles. Onsite, hybrid, or remote — anywhere in the US.";
+  "Actively seeking full-time Data Scientist, AI Engineer, and ML Engineer roles. Onsite, hybrid, or remote — anywhere in the US.";
 
 export const stats = [
   {
@@ -30,7 +28,7 @@ export const stats = [
     note: "NYC TLC trip data · medallion architecture",
   },
   {
-    value: "625+",
+    value: "700+",
     label: "Automated tests",
     note: "Unit, integration, and end-to-end coverage",
   },
@@ -40,14 +38,14 @@ export const stats = [
     note: "FinSight pre-market briefing pipeline",
   },
   {
-    value: "7",
+    value: "8",
     label: "Projects shipped",
-    note: "Analytics, ML, data engineering, and backend",
+    note: "Analytics, ML, data engineering, and AI",
   },
 ];
 
 export const summary =
-  "I'm Prabhath Vinay Vipparthi, a Master's in Data Science graduate from NJIT (GPA 3.7, May 2026). I work across the full data stack — from SQL analytics and ETL pipelines to feature engineering, model training, and production deployment. I've shipped a pre-market intelligence platform with RAG over pgvector, built a 5.97M-row medallion pipeline with PySpark, dbt, and Airflow, run rigorous statistical experiments on real e-commerce data, trained ML models with SHAP explainability on clinical and financial data, and processed millions of records on a distributed Hadoop cluster. I care about doing things properly — the math, the tests, and models that don't just score well but tell you why they made the call.";
+  "I'm Prabhath Vinay Vipparthi, a Data Scientist and AI Engineer with 4 years of experience across Scale AI and HCL Tech. MS Data Science from NJIT (GPA 3.7, May 2026). I work across the full data stack — building production ML pipelines, NLP systems, and RAG-powered platforms at Scale AI; enterprise churn modeling and forecasting at HCL Tech; and personal projects spanning 5.97M-row medallion pipelines, statistical experiments on real e-commerce data, and distributed Hadoop analytics. I care about doing things properly — the math, the tests, and models that don't just score well but tell you why they made the call.";
 
 export type Experience = {
   title: string;
@@ -60,22 +58,40 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
-    title: "AI Engineer — Graduate Capstone",
-    company: "NJIT — Learning & Development Initiative (LDI)",
-    period: "Jan — May 2026",
-    location: "Newark, NJ",
-    href: "https://github.com/prabhathv07/AI_Digital_Badge_Classification",
+    title: "Applied AI Engineer",
+    company: "Scale AI",
+    period: "Jan 2026 – Present",
+    location: "United States · Remote",
     bullets: [
-      "Built a production classification system (FastAPI, React/Vite, spaCy, SQLite) automating NJIT's institutional taxonomy across 3 dimensions, validated with rule-level traceability and 8-element plain-English decision explanations for every output.",
-      "Designed a 4-layer text extraction pipeline — 130+ lexicon phrase patterns, 44 regex rules, spaCy verb extraction, and an LLM stub — handling OBv3 JSON, guided forms, and free-text inputs.",
-      "Implemented a deterministic 3-stage rule engine (19 rules across category, type, and cognitive level) with immutable governance audit logs and human-in-the-loop override workflows.",
-      "Delivered a 351-test automated validation suite (100% passing) across unit, integration, and 7 end-to-end workflow scenarios.",
+      "Built Python, SQL, and PySpark pipelines processing 10K+ records, cutting manual validation effort by 30%.",
+      "Prepared training and evaluation datasets and engineered statistical and ML features (Pandas, NumPy, Scikit-learn) for automated anomaly and data-quality detection.",
+      "Built classification models (Scikit-learn, PyTorch) with cross-validation, precision/recall analysis, and threshold tuning to improve minority-class detection.",
+      "Integrated Hugging Face transformers and embeddings for text classification and semantic evaluation, reducing manual review activity by 25%.",
+      "Implemented embedding-based retrieval workflows and Python REST APIs for similarity search and AI/LLM evaluation.",
+      "Supported model deployment using MLflow, Docker, Kubernetes, Azure, and Databricks.",
+      "Monitored model quality, data drift, latency, and pipeline failures; optimized PySpark workloads reducing processing time by 28%.",
+      "Created Power BI dashboards tracking AI/ML performance, data-quality trends, and business KPIs.",
+    ],
+  },
+  {
+    title: "Data Scientist",
+    company: "HCL Tech",
+    period: "Jun 2021 – Jul 2024",
+    location: "India · On-site",
+    bullets: [
+      "Partnered with enterprise business stakeholders to translate retention and growth objectives into churn and forecasting use cases.",
+      "Conducted EDA and statistical analysis (Python, Pandas, NumPy, SQL) to uncover customer behavior patterns and key churn drivers.",
+      "Engineered 30+ customer-level features (purchase frequency, recency, transaction value, engagement) for predictive modeling.",
+      "Built and compared Logistic Regression, Random Forest, and Gradient Boosting classifiers with cross-validation and ROC-AUC, improving high-risk customer recall by 18%.",
+      "Developed demand forecasting models reducing forecast error by ~15%, supporting operational planning.",
+      "Processed 5K+ transaction records with PySpark and Databricks, cutting recurring batch runtime by 35%.",
+      "Automated data and model workflows using Airflow, AWS, and MLflow; delivered Tableau dashboards covering churn segments, forecasts, and KPIs.",
     ],
   },
   {
     title: "Office Assistant",
     company: "New Jersey Institute of Technology",
-    period: "Sep 2025 — May 2026",
+    period: "Jan 2025 – May 2026",
     location: "Newark, NJ",
     bullets: [
       "Developed a web-based study-room booking system to automate space reservation workflows for departmental staff and students, replacing manual scheduling.",
@@ -100,6 +116,24 @@ export type Project = {
 export const projects: Project[] = [
   {
     number: "01",
+    title: "AI Digital Badge Classification — NJIT LDI Capstone",
+    category: "NLP / AI Systems",
+    tag: "Featured · Production",
+    description:
+      "Production AI-assisted classification system automating NJIT's institutional taxonomy across 3 dimensions, validated on 20 real-world held-out submissions with 100% accuracy. Built a 4-layer text extraction pipeline — 130+ lexicon phrase patterns, 44 regex rules, spaCy Bloom's taxonomy matcher, and an LLM stub — handling OBv3 JSON, guided forms, and free-text inputs. Implemented a deterministic 3-stage rule engine (19 rules) with immutable audit logs, plain-English decision explanations, and human-in-the-loop override workflows.",
+    stack: ["FastAPI", "spaCy", "React / Vite", "SQLite", "Python", "GitHub Actions"],
+    metrics: [
+      { label: "Accuracy", value: "100%" },
+      { label: "Tests", value: "351 passing" },
+      { label: "Pipeline layers", value: "4" },
+      { label: "Rules", value: "19" },
+    ],
+    footer: "351-test suite · 100% accuracy on held-out set",
+    github: "https://github.com/prabhathv07/AI_Digital_Badge_Classification",
+    featured: true,
+  },
+  {
+    number: "02",
     title: "FinSight — Pre-Market Intelligence Platform",
     category: "AI / RAG",
     tag: "Featured · Production",
@@ -124,7 +158,7 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    number: "02",
+    number: "03",
     title: "StarCoder2 Self-Alignment Pipeline",
     category: "LLM Alignment",
     tag: "Featured · Research",
@@ -149,7 +183,7 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    number: "03",
+    number: "04",
     title: "NYC Taxi Medallion Data Pipeline",
     category: "Data Engineering",
     tag: "Medallion Architecture",
@@ -166,7 +200,7 @@ export const projects: Project[] = [
     github: "https://github.com/prabhathv07/nyc-taxi-pipeline",
   },
   {
-    number: "04",
+    number: "05",
     title: "Olist SQL Analysis & Hypothesis Testing",
     category: "Analytics",
     tag: "Experimentation",
@@ -183,7 +217,7 @@ export const projects: Project[] = [
     github: "https://github.com/prabhathv07/olist-sql-experimentation",
   },
   {
-    number: "05",
+    number: "06",
     title: "Loan Approval Risk Prediction",
     category: "Machine Learning",
     tag: "Finance",
@@ -200,7 +234,7 @@ export const projects: Project[] = [
     github: "https://github.com/prabhathv07/Financial-Risk-Loan-Approval",
   },
   {
-    number: "06",
+    number: "07",
     title: "Cryptocurrency Market Analysis on Hadoop",
     category: "Big Data",
     tag: "Distributed Systems",
@@ -217,7 +251,7 @@ export const projects: Project[] = [
     github: "https://github.com/prabhathv07/crypto-hadoop-analysis",
   },
   {
-    number: "07",
+    number: "08",
     title: "User Management System",
     category: "Backend",
     tag: "DevOps · CI/CD",
@@ -255,7 +289,7 @@ export const skills: SkillGroup[] = [
     items: ["Python", "SQL", "TypeScript", "Java", "R"],
   },
   {
-    category: "Machine Learning",
+    category: "Machine Learning & AI",
     items: [
       "PyTorch",
       "TensorFlow",
@@ -265,6 +299,8 @@ export const skills: SkillGroup[] = [
       "spaCy",
       "SHAP",
       "SMOTE",
+      "RAG",
+      "Gemini",
     ],
   },
   {
@@ -274,6 +310,7 @@ export const skills: SkillGroup[] = [
       "dbt",
       "Airflow",
       "DuckDB",
+      "Databricks",
       "Hadoop",
       "MapReduce",
       "Pandas",
@@ -281,15 +318,24 @@ export const skills: SkillGroup[] = [
     ],
   },
   {
-    category: "Cloud · Backend",
+    category: "MLOps & Cloud",
     items: [
-      "FastAPI",
-      "AWS",
-      "PostgreSQL",
-      "pgvector",
+      "MLflow",
       "Docker",
+      "Kubernetes",
+      "Azure",
+      "AWS",
       "GitHub Actions",
       "Render",
+    ],
+  },
+  {
+    category: "Backend & Databases",
+    items: [
+      "FastAPI",
+      "PostgreSQL",
+      "pgvector",
+      "SQLAlchemy",
       "React / Vite",
     ],
   },
@@ -317,12 +363,6 @@ export const education = [
     school: "New Jersey Institute of Technology · Ying Wu College of Computing",
     period: "Graduated May 2026 · Newark, NJ · GPA 3.7",
     detail: "Class of 2026",
-  },
-  {
-    degree: "Bachelor of Technology, Electrical & Electronics Engineering",
-    school: "Jawaharlal Nehru Technological University, Kakinada (JNTUK)",
-    period: "Graduated April 2023 · Andhra Pradesh, India",
-    detail: "Class of 2023",
   },
 ];
 
@@ -361,6 +401,20 @@ export const certifications: Certification[] = [
     verify: "https://verify.skilljar.com/c/dkrh6ss5mx5b",
     description:
       "Core conceptual framework for understanding large language models, their capabilities and limitations, safety considerations, and effective evaluation strategies.",
+  },
+  {
+    title: "Claude Code in Action",
+    issuer: "Anthropic Education",
+    date: "2026",
+    description:
+      "Practical course on using Claude Code for agentic software development — AI-assisted coding, project automation, and real-world engineering workflows.",
+  },
+  {
+    title: "Claude Platform 101",
+    issuer: "Anthropic Education",
+    date: "2026",
+    description:
+      "Foundation course on the Claude API, platform capabilities, and building AI-powered applications on Anthropic's developer platform.",
   },
   {
     title: "Supervised Machine Learning: Regression and Classification",
