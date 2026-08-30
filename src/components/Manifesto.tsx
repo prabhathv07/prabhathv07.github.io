@@ -1,105 +1,102 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { BlurFade } from "@/components/ui/blur-fade";
 
-const words = [
-  { text: "I",          accent: false },
-  { text: "analyze",    accent: true  },
-  { text: "data,",      accent: false },
-  { text: "ship",       accent: true  },
-  { text: "pipelines,", accent: false },
-  { text: "and",        accent: false },
-  { text: "train",      accent: true  },
-  { text: "models",     accent: false },
-  { text: "that",       accent: false },
-  { text: "explain",    accent: true  },
-  { text: "themselves.",accent: false },
+const ease = [0.16, 1, 0.3, 1] as const;
+
+const principles = [
+  "Statistical rigor before conclusions",
+  "Tests before shipping — always",
+  "Models that explain their reasoning",
+  "Production ML, not notebook demos",
+  "End-to-end ownership, start to deploy",
 ];
 
 export default function Manifesto() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const opacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0.15, 1, 1, 0.3]);
-  const y       = useTransform(scrollYProgress, [0, 0.5], [40, 0]);
-
   return (
-    <section id="about" ref={ref} className="relative py-32 md:py-52 overflow-hidden">
-      <div className="blob top-[20%] left-[-8%]  w-[480px] h-[480px] bg-violet-600/10" />
-      <div className="blob bottom-[10%] right-[-8%] w-[480px] h-[480px] bg-cyan-500/10" />
+    <section id="about" className="border-t border-[color:var(--border-strong)] py-20 md:py-28">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 relative">
         <BlurFade delay={0.05} inView>
-          <div className="mb-10 md:mb-14 flex items-center gap-4 text-[11px] tracking-[0.3em] uppercase text-[color:var(--fg-dim)] font-mono">
-            <span className="h-px w-8 bg-[color:var(--border-strong)]" />
+          <div className="mb-10 flex items-center gap-3 text-[10px] font-mono tracking-[0.3em] uppercase text-[color:var(--muted)]">
             <span>About</span>
+            <span className="flex-1 h-px bg-[color:var(--border)]" />
           </div>
         </BlurFade>
 
-        {/* Scroll-driven word reveal */}
-        <motion.h2
-          style={{ opacity, y }}
-          className="font-display leading-[1] text-[9vw] md:text-[6.5vw] text-[color:var(--fg)] flex flex-wrap gap-x-[0.18em] gap-y-[0.08em]"
-        >
-          {words.map((w, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.85, delay: i * 0.055, ease: [0.16, 1, 0.3, 1] }}
-              className={w.accent ? "text-gradient-accent italic" : ""}
-            >
-              {w.text}
-            </motion.span>
-          ))}
-        </motion.h2>
+        <div className="grid md:grid-cols-[1fr_380px] gap-12 md:gap-20 items-start">
 
-        {/* Bio paragraph */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="mt-16 md:mt-24 grid md:grid-cols-2 gap-8 md:gap-16 ml-auto max-w-4xl"
-        >
-          <p className="text-base md:text-lg leading-relaxed text-[color:var(--fg-dim)]">
-            MS Data Science at NJIT (GPA&nbsp;3.7, May&nbsp;2026). Currently building AI pipelines at&nbsp;
-            <span className="text-[color:var(--fg)] font-medium">Scale AI</span> — classification models,
-            Hugging&nbsp;Face embeddings, MLflow deployments, PySpark workloads.
-          </p>
-          <p className="text-base md:text-lg leading-relaxed text-[color:var(--fg-dim)]">
-            Previously at <span className="text-[color:var(--fg)] font-medium">HCL Tech</span> for three years —
-            churn modeling, demand forecasting, Airflow automation, Databricks pipelines.
-            The constant across all of it: the math holds up, the tests catch the regressions,
-            and the output explains itself.
-          </p>
-        </motion.div>
+          {/* Left: bio */}
+          <BlurFade delay={0.08} inView>
+            <div>
+              <motion.h2
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, ease }}
+                className="font-display text-4xl md:text-6xl lg:text-7xl leading-[0.92] text-[color:var(--fg)] mb-8"
+              >
+                Think in data.
+                <br />
+                <em className="italic text-[color:var(--fg-dim)]">Ship systems.</em>
+              </motion.h2>
 
-        {/* Key philosophy pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, delay: 0.7 }}
-          className="mt-12 flex flex-wrap gap-3"
-        >
-          {[
-            "Production ML over notebooks",
-            "Tests before shipping",
-            "Explainability by default",
-            "End-to-end ownership",
-            "Math-first thinking",
-          ].map((pill) => (
-            <span
-              key={pill}
-              className="glass px-4 py-2 rounded-full text-[12px] font-mono tracking-wide text-[color:var(--fg-dim)]"
-            >
-              {pill}
-            </span>
-          ))}
-        </motion.div>
+              <div className="space-y-4 text-[15px] md:text-base leading-relaxed text-[color:var(--fg-dim)] max-w-xl">
+                <p>
+                  Data Scientist and AI Engineer with 4 years spanning enterprise analytics
+                  and applied AI. Built churn models, forecasting systems, and customer
+                  analytics at <span className="text-[color:var(--fg)]">HCL Tech</span>, then
+                  expanded into NLP, embeddings, and retrieval-based AI at{" "}
+                  <span className="text-[color:var(--fg)]">Scale AI</span>.
+                </p>
+                <p>
+                  Currently building classification models, evaluation datasets, and production
+                  ML pipelines — working across Python, PySpark, PyTorch, Hugging Face,
+                  and MLflow. MS Data Science, NJIT (GPA 3.7, May 2026).
+                </p>
+                <p>
+                  I care about the math, the tests, and models that don&apos;t just score well
+                  but explain why they made the call.
+                </p>
+              </div>
+            </div>
+          </BlurFade>
+
+          {/* Right: principles + education */}
+          <BlurFade delay={0.14} inView>
+            <div>
+              <div className="text-[10px] font-mono tracking-[0.28em] uppercase text-[color:var(--muted)] mb-6">
+                How I work
+              </div>
+              <ul className="divide-y divide-[color:var(--border)]">
+                {principles.map((p, i) => (
+                  <motion.li
+                    key={p}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, ease, delay: 0.06 + i * 0.06 }}
+                    className="flex items-start gap-3 py-4 text-sm text-[color:var(--fg-dim)] hover:text-[color:var(--fg)] transition-colors"
+                  >
+                    <span className="mt-1.5 w-1 h-1 rounded-full bg-[color:var(--accent)] flex-shrink-0" />
+                    {p}
+                  </motion.li>
+                ))}
+              </ul>
+
+              <div className="mt-8 pt-6 border-t border-[color:var(--border)]">
+                <div className="text-[10px] font-mono tracking-[0.28em] uppercase text-[color:var(--muted)] mb-3">
+                  Education
+                </div>
+                <div className="text-sm font-medium text-[color:var(--fg)]">MS Data Science</div>
+                <div className="text-xs text-[color:var(--fg-dim)] mt-1">
+                  New Jersey Institute of Technology · GPA 3.7 · May 2026
+                </div>
+              </div>
+            </div>
+          </BlurFade>
+        </div>
       </div>
     </section>
   );

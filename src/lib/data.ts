@@ -88,15 +88,6 @@ export const experiences: Experience[] = [
       "Automated data and model workflows using Airflow, AWS, and MLflow; delivered Tableau dashboards covering churn segments, forecasts, and KPIs.",
     ],
   },
-  {
-    title: "Office Assistant",
-    company: "New Jersey Institute of Technology",
-    period: "Jan 2025 – May 2026",
-    location: "Newark, NJ",
-    bullets: [
-      "Developed a web-based study-room booking system to automate space reservation workflows for departmental staff and students, replacing manual scheduling.",
-    ],
-  },
 ];
 
 export type Project = {
@@ -198,6 +189,7 @@ export const projects: Project[] = [
     ],
     footer: "5.97M rows · medallion architecture",
     github: "https://github.com/prabhathv07/nyc-taxi-pipeline",
+    featured: true,
   },
   {
     number: "05",
