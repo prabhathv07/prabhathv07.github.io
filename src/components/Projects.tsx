@@ -53,6 +53,7 @@ function FeaturedCard({
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Live demo for ${project.title}`}
                 data-cursor-label="Live"
                 className="w-8 h-8 rounded-full border border-[color:var(--border)] flex items-center justify-center text-[color:var(--fg-dim)] hover:text-[color:var(--fg)] hover:border-[color:var(--border-strong)] transition-all"
               >
@@ -64,6 +65,7 @@ function FeaturedCard({
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`GitHub source for ${project.title}`}
                 data-cursor-label="Code"
                 className="w-8 h-8 rounded-full border border-[color:var(--border)] flex items-center justify-center text-[color:var(--fg-dim)] hover:text-[color:var(--fg)] hover:border-[color:var(--border-strong)] transition-all"
               >
