@@ -1,5 +1,7 @@
 "use client";
 
+import { Marquee as MarqueeUI } from "@/components/ui/marquee";
+
 const tags = [
   "SQL Analytics",
   "Data Pipelines",
@@ -21,7 +23,7 @@ function Star() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="w-4 h-4 flex-shrink-0 text-white/40"
+      className="w-3 h-3 flex-shrink-0 text-[color:var(--border-strong)]"
       fill="currentColor"
       aria-hidden
     >
@@ -32,17 +34,17 @@ function Star() {
 
 export default function Marquee() {
   return (
-    <section className="relative py-8 md:py-12 border-y hairline overflow-hidden">
-      <div className="flex whitespace-nowrap marquee-track">
-        {[...tags, ...tags].map((tag, i) => (
-          <div key={i} className="flex items-center gap-6 px-6">
-            <span className="font-display text-3xl md:text-5xl text-white/80">
+    <section className="relative py-6 md:py-10 border-y hairline overflow-hidden">
+      <MarqueeUI pauseOnHover className="[--duration:35s]">
+        {tags.map((tag) => (
+          <div key={tag} className="flex items-center gap-5 px-5">
+            <span className="font-display text-2xl md:text-4xl text-[color:var(--fg-dim)] whitespace-nowrap select-none">
               {tag}
             </span>
             <Star />
           </div>
         ))}
-      </div>
+      </MarqueeUI>
     </section>
   );
 }

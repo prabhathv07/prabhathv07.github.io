@@ -1,43 +1,63 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+
+type CursorVariant = "default" | "link" | "text" | "view" | "drag";
+
+const LABEL_MAP: Record<string, string> = {
+  Email: "EMAIL",
+  Download: "SAVE",
+  GitHub: "GITHUB",
+  Code: "CODE",
+  Live: "VISIT",
+  LinkedIn: "LINKEDIN",
+  Verify: "VERIFY",
+  Light: "LIGHT",
+  Dark: "DARK",
+  View: "VIEW",
+  Open: "OPEN",
+};
 
 export default function CustomCursor() {
   const [visible, setVisible] = useState(false);
-  const [variant, setVariant] = useState<"default" | "link" | "text">("default");
+  const [variant, setVariant] = useState<CursorVariant>("default");
   const [label, setLabel] = useState("");
+  const isTouchRef = useRef(false);
 
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-
-  const springConfig = { damping: 25, stiffness: 350, mass: 0.5 };
-  const smoothX = useSpring(cursorX, springConfig);
-  const smoothY = useSpring(cursorY, springConfig);
+  const cursorX = useMotionValue(-200);
+  const cursorY = useMotionValue(-200);
+  const springCfg = { damping: 28, stiffness: 400, mass: 0.4 };
+  const smoothX = useSpring(cursorX, springCfg);
+  const smoothY = useSpring(cursorY, springCfg);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
-    if (isTouchDevice) return;
+    isTouchRef.current = window.matchMedia("(pointer: coarse)").matches;
+    if (isTouchRef.current) return;
 
-    const move = (e: MouseEvent) => {
+    const onMove = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
       if (!visible) setVisible(true);
     };
-    const leave = () => setVisible(false);
 
-    const overListener = (e: MouseEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (!target) return;
-      const link = target.closest("a, button, [data-cursor='link']");
-      const text = target.closest("[data-cursor='text']");
-      if (link) {
+    const onLeave = () => setVisible(false);
+    const onEnter = () => setVisible(true);
+
+    const onOver = (e: MouseEvent) => {
+      const t = e.target as HTMLElement;
+      const link = t.closest("a, button, [data-cursor='link']");
+      const text = t.closest("[data-cursor='text']");
+      const drag = t.closest("[data-cursor='drag']");
+
+      if (drag) {
+        setVariant("drag");
+        setLabel("DRAG");
+      } else if (link) {
         setVariant("link");
-        const l =
-          link.getAttribute("data-cursor-label") ||
-          (link.tagName === "A" ? "Open" : "");
-        setLabel(l);
+        const raw = link.getAttribute("data-cursor-label") || "";
+        setLabel(LABEL_MAP[raw] || raw.toUpperCase() || "OPEN");
       } else if (text) {
         setVariant("text");
         setLabel("");
@@ -47,55 +67,53 @@ export default function CustomCursor() {
       }
     };
 
-    window.addEventListener("mousemove", move);
-    window.addEventListener("mouseover", overListener);
-    document.body.addEventListener("mouseleave", leave);
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseover", onOver);
+    document.documentElement.addEventListener("mouseleave", onLeave);
+    document.documentElement.addEventListener("mouseenter", onEnter);
 
     return () => {
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mouseover", overListener);
-      document.body.removeEventListener("mouseleave", leave);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseover", onOver);
+      document.documentElement.removeEventListener("mouseleave", onLeave);
+      document.documentElement.removeEventListener("mouseenter", onEnter);
     };
   }, [cursorX, cursorY, visible]);
 
-  const scale =
-    variant === "link" ? 2.6 : variant === "text" ? 0.4 : 1;
+  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return null;
+
+  const dotScale = variant === "link" ? 3 : variant === "text" ? 0.35 : variant === "drag" ? 2 : 1;
+  const showLabel = (variant === "link" || variant === "drag") && label;
 
   return (
     <>
+      {/* Main dot */}
       <motion.div
         aria-hidden
-        style={{
-          translateX: smoothX,
-          translateY: smoothY,
-        }}
         className="pointer-events-none fixed left-0 top-0 z-[9999] mix-blend-difference"
+        style={{ translateX: smoothX, translateY: smoothY }}
       >
         <motion.div
-          animate={{
-            scale,
-            opacity: visible ? 1 : 0,
-          }}
-          transition={{ type: "spring", damping: 20, stiffness: 250 }}
           className="-ml-3 -mt-3 h-6 w-6 rounded-full bg-white"
+          animate={{ scale: dotScale, opacity: visible ? 1 : 0 }}
+          transition={{ type: "spring", damping: 18, stiffness: 280 }}
         />
       </motion.div>
 
+      {/* Label pill */}
       <motion.div
         aria-hidden
-        style={{
-          translateX: cursorX,
-          translateY: cursorY,
-        }}
         className="pointer-events-none fixed left-0 top-0 z-[9998]"
+        style={{ translateX: cursorX, translateY: cursorY }}
       >
         <motion.div
+          className="-translate-x-1/2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 text-[9px] font-mono tracking-[0.18em] text-white whitespace-nowrap"
           animate={{
-            opacity: variant === "link" && label ? 1 : 0,
-            y: variant === "link" ? -40 : -30,
+            opacity: showLabel ? 1 : 0,
+            y: showLabel ? -44 : -32,
+            scale: showLabel ? 1 : 0.85,
           }}
-          transition={{ type: "spring", damping: 22, stiffness: 260 }}
-          className="-translate-x-1/2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-white whitespace-nowrap"
+          transition={{ type: "spring", damping: 22, stiffness: 300 }}
         >
           {label}
         </motion.div>

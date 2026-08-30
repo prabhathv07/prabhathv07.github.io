@@ -8,10 +8,14 @@ import Experience from "@/components/Experience";
 import Certifications from "@/components/Certifications";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ProgressIndicator from "@/components/ProgressIndicator";
+import CommandPalette from "@/components/CommandPalette";
 
 export default function Home() {
   return (
     <>
+      <ProgressIndicator />
+      <CommandPalette />
       <main className="flex-1">
         <Hero />
         <Marquee />

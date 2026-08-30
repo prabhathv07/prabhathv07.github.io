@@ -24,23 +24,27 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Prabhath Vinay Vipparthi — Data Scientist · Applied ML",
+  title: "Prabhath Vinay Vipparthi — Data Scientist · AI Engineer · ML Engineer · Data Engineer",
   description:
-    "MS Data Science, NJIT (GPA 3.7). Production AI systems, RAG pipelines, 5.97M-row data engineering, 625+ tests. Building models that explain themselves.",
+    "MS Data Science, NJIT (GPA 3.7). Production AI systems, RAG pipelines, 5.97M-row data engineering, 625+ tests. Scale AI & HCL Tech experience.",
   keywords: [
     "Data Scientist",
+    "AI Engineer",
+    "ML Engineer",
+    "Data Engineer",
     "Machine Learning",
     "NLP",
     "RAG",
     "MLOps",
+    "PySpark",
     "Prabhath Vipparthi",
     "NJIT",
   ],
   authors: [{ name: "Prabhath Vinay Vipparthi" }],
   openGraph: {
-    title: "Prabhath Vinay Vipparthi — Data Scientist · Applied ML",
+    title: "Prabhath Vinay Vipparthi — Data Scientist · AI Engineer",
     description:
-      "Production AI systems · RAG · 5.97M-row data pipelines · 625+ tests.",
+      "Production AI systems · RAG · 5.97M-row data pipelines · Scale AI · HCL Tech.",
     type: "website",
   },
 };
