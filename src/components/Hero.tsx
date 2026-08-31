@@ -1,49 +1,105 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import { personal, stats } from "@/lib/data";
+import NeuralField from "@/components/NeuralField";
+import SplitText from "@/components/SplitText";
+import { MagneticButton } from "@/components/MagneticButton";
+import { useEffect, useState } from "react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function Hero() {
+  const reduced = useReducedMotion();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    const check = () => {
+      const t = document.documentElement.getAttribute("data-theme");
+      setTheme(t === "dark" ? "dark" : "light");
+    };
+    check();
+    const obs = new MutationObserver(check);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => obs.disconnect();
+  }, []);
+
+  const dim = theme === "dark" ? "240, 237, 232" : "17, 17, 17";
+  const accent = theme === "dark" ? "20, 184, 166" : "15, 118, 110";
+
   return (
-    <section id="top" className="min-h-[calc(100dvh-3.5rem)] flex flex-col justify-between">
+    <section
+      id="top"
+      className="relative min-h-[calc(100dvh-3.5rem)] flex flex-col justify-between overflow-hidden"
+    >
+      {/* WebGL neural field background */}
+      <div className="absolute inset-0 -z-10">
+        <NeuralField
+          className="absolute inset-0 w-full h-full opacity-[0.55]"
+          accent={accent}
+          dim={dim}
+        />
+        {/* radial fade to keep text legible */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 60% at 30% 40%, var(--bg) 0%, transparent 65%), radial-gradient(ellipse 60% 40% at 100% 100%, var(--bg-surface) 0%, transparent 60%)",
+          }}
+        />
+      </div>
+
       {/* ── Main content ──────────────────────────────────────── */}
-      <div className="flex-1 flex flex-col justify-center max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24 w-full">
+      <div className="relative flex-1 flex flex-col justify-center max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24 w-full">
 
         {/* Available badge */}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease }}
-          className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-[color:var(--fg-dim)] border border-[color:var(--border)] bg-[color:var(--bg-card)] rounded-full px-3 py-1.5 w-fit"
+          className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-[color:var(--fg-dim)] border border-[color:var(--border)] bg-[color:var(--bg-card)] rounded-full px-3 py-1.5 w-fit backdrop-blur-sm"
           style={{ boxShadow: "var(--shadow-xs)" }}
         >
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75 animate-ping" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
           </span>
-          Available for full-time opportunities · Anywhere in the US
+          Available for full-time · Anywhere in the US
         </motion.div>
 
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease, delay: 0.08 }}
-          className="font-display font-semibold text-[clamp(2.6rem,7vw,5.5rem)] leading-[1.04] text-[color:var(--fg)] mb-3"
-        >
-          Data Scientist
-          <br />
-          <span className="text-[color:var(--accent)]">&</span> AI Engineer.
-        </motion.h1>
+        {/* Cinematic headline */}
+        <h1 className="font-display font-semibold text-[clamp(2.6rem,7.5vw,6rem)] leading-[1.02] text-[color:var(--fg)] mb-4 tracking-[-0.03em]">
+          {reduced ? (
+            <>
+              Data Scientist<br />
+              <span className="text-[color:var(--accent)]">&</span> AI Engineer.
+            </>
+          ) : (
+            <>
+              <SplitText delay={0.1} stagger={0.09} duration={1.0} className="block">
+                Data Scientist
+              </SplitText>
+              <SplitText
+                delay={0.55}
+                stagger={0.08}
+                duration={1.0}
+                className="block"
+                wrapper={(word, i) =>
+                  i === 0 ? <span className="text-[color:var(--accent)]">{word}</span> : word
+                }
+              >
+                & AI Engineer.
+              </SplitText>
+            </>
+          )}
+        </h1>
 
         {/* Name */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease, delay: 0.2 }}
+          transition={{ duration: 0.5, ease, delay: 1.1 }}
           className="text-lg font-medium text-[color:var(--fg-dim)] mb-8"
         >
           Prabhath Vipparthi
@@ -53,7 +109,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease, delay: 0.28 }}
+          transition={{ duration: 0.6, ease, delay: 1.2 }}
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-8"
         >
           <div className="max-w-xl space-y-3">
@@ -65,28 +121,29 @@ export default function Hero() {
             </p>
             <div className="flex items-center gap-1.5 text-xs text-[color:var(--muted)]">
               <MapPin size={11} />
-              Harrison, NJ (NYC metro) · Open to relocation anywhere in the US
+              Harrison, NJ (NYC metro) · Open to relocation
             </div>
           </div>
 
           <div className="flex items-center gap-3 flex-shrink-0">
-            <a
+            <MagneticButton
+              as="a"
               href="#work"
               data-cursor-label="Work"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[color:var(--accent)] text-white text-sm font-medium hover:opacity-90 transition-opacity"
             >
               View Work <ArrowRight size={13} />
-            </a>
-            <a
+            </MagneticButton>
+            <MagneticButton
+              as="a"
               href={personal.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor-label="LinkedIn"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[color:var(--border-strong)] text-sm text-[color:var(--fg-dim)] hover:text-[color:var(--fg)] hover:border-[color:var(--border-strong)] bg-[color:var(--bg-card)] transition-all"
-              style={{ boxShadow: "var(--shadow-xs)" }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[color:var(--border-strong)] text-sm text-[color:var(--fg-dim)] hover:text-[color:var(--fg)] bg-[color:var(--bg-card)] transition-all"
             >
               LinkedIn <ArrowUpRight size={12} />
-            </a>
+            </MagneticButton>
           </div>
         </motion.div>
       </div>
@@ -95,17 +152,17 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease, delay: 0.45 }}
-        className="max-w-6xl mx-auto px-6 md:px-10 pb-10 md:pb-14 w-full"
+        transition={{ duration: 0.7, ease, delay: 1.35 }}
+        className="relative max-w-6xl mx-auto px-6 md:px-10 pb-10 md:pb-14 w-full"
       >
         <div
-          className="grid grid-cols-2 sm:grid-cols-4 rounded-xl overflow-hidden border border-[color:var(--border)]"
+          className="grid grid-cols-2 sm:grid-cols-4 rounded-xl overflow-hidden border border-[color:var(--border)] backdrop-blur-sm"
           style={{ boxShadow: "var(--shadow-sm)" }}
         >
           {stats.map((s, i) => (
             <div
               key={s.label}
-              className={`bg-[color:var(--bg-card)] px-6 py-5 flex flex-col gap-1 ${
+              className={`bg-[color:var(--bg-card)]/90 px-6 py-5 flex flex-col gap-1 ${
                 i < stats.length - 1 ? "border-r border-[color:var(--border)]" : ""
               }`}
             >
@@ -116,6 +173,16 @@ export default function Hero() {
             </div>
           ))}
         </div>
+      </motion.div>
+
+      {/* Scroll cue */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 1, 1, 0] }}
+        transition={{ duration: 2.4, delay: 1.8, repeat: Infinity, repeatDelay: 0.4 }}
+        className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[9px] font-mono tracking-[0.2em] text-[color:var(--muted)] uppercase pointer-events-none"
+      >
+        scroll
       </motion.div>
     </section>
   );

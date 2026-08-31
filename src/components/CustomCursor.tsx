@@ -107,7 +107,13 @@ export default function CustomCursor() {
         style={{ translateX: cursorX, translateY: cursorY }}
       >
         <motion.div
-          className="-translate-x-1/2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 text-[9px] font-mono tracking-[0.18em] text-white whitespace-nowrap"
+          className="-translate-x-1/2 rounded-full px-3 py-1 text-[9px] font-mono tracking-[0.18em] whitespace-nowrap"
+          style={{
+            background: "var(--fg)",
+            color: "var(--bg)",
+            border: "1px solid var(--border-strong)",
+            boxShadow: "var(--shadow-sm)",
+          }}
           animate={{
             opacity: showLabel ? 1 : 0,
             y: showLabel ? -44 : -32,

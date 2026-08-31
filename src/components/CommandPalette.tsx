@@ -74,16 +74,16 @@ export default function CommandPalette() {
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center gap-3 px-4 py-3 border-b hairline">
-              <Search size={15} className="text-white/40 flex-shrink-0" />
+            <div className="flex items-center gap-3 px-4 py-3 border-b border-[color:var(--border)]">
+              <Search size={15} className="text-[color:var(--muted)] flex-shrink-0" />
               <input
                 autoFocus
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search pages, links…"
-                className="flex-1 bg-transparent text-sm text-[color:var(--fg)] placeholder-[color:var(--fg-dim)] outline-none font-mono"
+                className="flex-1 bg-transparent text-sm text-[color:var(--fg)] placeholder-[color:var(--muted)] outline-none font-mono"
               />
-              <kbd className="hidden sm:flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-mono text-white/30 border border-white/10 rounded">
+              <kbd className="hidden sm:flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-mono text-[color:var(--muted)] border border-[color:var(--border)] rounded">
                 ESC
               </kbd>
             </div>
@@ -99,7 +99,7 @@ export default function CommandPalette() {
                       onClick={() => navigate(cmd)}
                       onMouseEnter={() => setSelected(i)}
                       className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors ${
-                        i === selected ? "bg-white/5" : "hover:bg-white/[0.03]"
+                        i === selected ? "bg-[color:var(--bg-elevated)]" : "hover:bg-[color:var(--bg-surface)]"
                       }`}
                     >
                       <span className="w-7 h-7 rounded-lg glass flex items-center justify-center text-sm flex-shrink-0 font-mono text-[color:var(--fg-dim)]">
@@ -110,16 +110,16 @@ export default function CommandPalette() {
                         <div className="text-xs text-[color:var(--fg-dim)] truncate">{cmd.sub}</div>
                       </div>
                       {i === selected && (
-                        <ArrowRight size={14} className="text-white/40 flex-shrink-0" />
+                        <ArrowRight size={14} className="text-[color:var(--accent)] flex-shrink-0" />
                       )}
                     </button>
                   </li>
                 ))
               )}
             </ul>
-            <div className="px-4 py-2 border-t hairline flex items-center justify-between">
-              <span className="text-[10px] font-mono text-white/25">⌘K to toggle</span>
-              <div className="flex items-center gap-3 text-[10px] font-mono text-white/25">
+            <div className="px-4 py-2 border-t border-[color:var(--border)] flex items-center justify-between">
+              <span className="text-[10px] font-mono text-[color:var(--muted)]">⌘K to toggle</span>
+              <div className="flex items-center gap-3 text-[10px] font-mono text-[color:var(--muted)]">
                 <span>↑↓ navigate</span>
                 <span>↵ open</span>
               </div>
