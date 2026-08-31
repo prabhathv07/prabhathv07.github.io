@@ -34,24 +34,24 @@ export default function Hero() {
       className="relative min-h-[calc(100dvh-3.5rem)] flex flex-col justify-between overflow-hidden"
     >
       {/* WebGL neural field background */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <NeuralField
-          className="absolute inset-0 w-full h-full opacity-[0.55]"
+          className="absolute inset-0 w-full h-full opacity-[0.65]"
           accent={accent}
           dim={dim}
         />
         {/* radial fade to keep text legible */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 30% 40%, var(--bg) 0%, transparent 65%), radial-gradient(ellipse 60% 40% at 100% 100%, var(--bg-surface) 0%, transparent 60%)",
+              "radial-gradient(ellipse 55% 45% at 22% 45%, var(--bg) 0%, transparent 70%)",
           }}
         />
       </div>
 
       {/* ── Main content ──────────────────────────────────────── */}
-      <div className="relative flex-1 flex flex-col justify-center max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24 w-full">
+      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24 w-full">
 
         {/* Available badge */}
         <motion.div
@@ -153,7 +153,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease, delay: 1.35 }}
-        className="relative max-w-6xl mx-auto px-6 md:px-10 pb-10 md:pb-14 w-full"
+        className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 pb-10 md:pb-14 w-full"
       >
         <div
           className="grid grid-cols-2 sm:grid-cols-4 rounded-xl overflow-hidden border border-[color:var(--border)] backdrop-blur-sm"
