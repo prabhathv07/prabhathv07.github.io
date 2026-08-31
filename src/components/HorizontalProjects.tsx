@@ -87,7 +87,13 @@ function DesktopHorizontal() {
       className="relative border-t border-[color:var(--border)] overflow-hidden"
       style={{ height: "100vh" }}
     >
-      <div className="absolute top-0 left-0 right-0 z-10 pt-10 md:pt-14 px-6 md:px-10">
+      <div
+        className="absolute top-0 left-0 right-0 z-10 pt-10 md:pt-14 pb-4 px-6 md:px-10"
+        style={{
+          background:
+            "linear-gradient(to bottom, var(--bg) 0%, var(--bg) 65%, transparent 100%)",
+        }}
+      >
         <div className="max-w-6xl mx-auto flex items-end justify-between gap-6">
           <div>
             <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-[color:var(--muted)] mb-3">
