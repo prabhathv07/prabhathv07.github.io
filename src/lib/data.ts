@@ -61,7 +61,7 @@ export const experiences: Experience[] = [
     title: "Applied AI Engineer",
     company: "Scale AI",
     period: "Jan 2026 – Present",
-    location: "United States · Remote",
+    location: "United States",
     bullets: [
       "Built Python, SQL, and PySpark pipelines processing 10K+ records, cutting manual validation effort by 30%.",
       "Prepared training and evaluation datasets and engineered statistical and ML features (Pandas, NumPy, Scikit-learn) for automated anomaly and data-quality detection.",
@@ -77,7 +77,7 @@ export const experiences: Experience[] = [
     title: "Data Scientist",
     company: "HCL Tech",
     period: "Jun 2021 – Jul 2024",
-    location: "India · On-site",
+    location: "India",
     bullets: [
       "Partnered with enterprise business stakeholders to translate retention and growth objectives into churn and forecasting use cases.",
       "Conducted EDA and statistical analysis (Python, Pandas, NumPy, SQL) to uncover customer behavior patterns and key churn drivers.",

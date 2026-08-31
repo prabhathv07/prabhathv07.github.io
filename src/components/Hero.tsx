@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { personal, stats } from "@/lib/data";
 import NeuralField from "@/components/NeuralField";
 import SplitText from "@/components/SplitText";
@@ -73,7 +73,7 @@ export default function Hero() {
           {reduced ? (
             <>
               Data Scientist<br />
-              <span className="text-[color:var(--accent)]">&</span> AI Engineer.
+              <span className="text-[color:var(--accent)]">&</span> AI Engineer
             </>
           ) : (
             <>
@@ -89,7 +89,7 @@ export default function Hero() {
                   i === 0 ? <span className="text-[color:var(--accent)]">{word}</span> : word
                 }
               >
-                & AI Engineer.
+                & AI Engineer
               </SplitText>
             </>
           )}
@@ -114,15 +114,13 @@ export default function Hero() {
         >
           <div className="max-w-xl space-y-3">
             <p className="text-base text-[color:var(--fg-dim)] leading-[1.65]">
-              4 years building production ML systems, NLP pipelines, and RAG platforms at{" "}
-              <span className="text-[color:var(--fg)] font-medium">Scale AI</span> and{" "}
-              <span className="text-[color:var(--fg)] font-medium">HCL Tech</span>.{" "}
-              MS Data Science, NJIT (GPA 3.7, May 2026).
+              I&rsquo;ve spent the last four years shipping ML in production &mdash;
+              embedding retrieval and classification pipelines at{" "}
+              <span className="text-[color:var(--fg)] font-medium">Scale AI</span>, and
+              churn and demand-forecasting models at{" "}
+              <span className="text-[color:var(--fg)] font-medium">HCL Tech</span> before that.
+              Wrapping up my MS in Data Science at NJIT this May.
             </p>
-            <div className="flex items-center gap-1.5 text-xs text-[color:var(--muted)]">
-              <MapPin size={11} />
-              Harrison, NJ (NYC metro) · Open to relocation
-            </div>
           </div>
 
           <div className="flex items-center gap-3 flex-shrink-0">
