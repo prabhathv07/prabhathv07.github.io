@@ -72,10 +72,6 @@ export default function Contact() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[color:var(--border-strong)] flex-shrink-0" />
                   Open to relocate anywhere in the US
                 </div>
-                <div className="flex items-center gap-2.5 text-sm text-[color:var(--fg-dim)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[color:var(--border-strong)] flex-shrink-0" />
-                  Harrison, NJ (NYC metro)
-                </div>
               </div>
 
               <a

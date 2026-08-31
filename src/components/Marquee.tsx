@@ -2,38 +2,33 @@
 
 import { Marquee as MarqueeUI } from "@/components/ui/marquee";
 
-const items = [
-  { text: "Scale AI", sub: "Applied AI Engineer" },
-  { text: "HCL Tech", sub: "Data Scientist" },
-  { text: "5.97M", sub: "Records processed" },
-  { text: "700+", sub: "Automated tests" },
-  { text: "NJIT MS", sub: "GPA 3.7 · 2026" },
-  { text: "4 Years", sub: "Industry experience" },
-  { text: "PyTorch · PySpark", sub: "Production ML" },
-  { text: "RAG · pgvector", sub: "Retrieval AI" },
+const tech = [
+  "Python", "PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face",
+  "Transformers", "spaCy", "PySpark", "Apache Spark", "Databricks",
+  "dbt", "Airflow", "DuckDB", "PostgreSQL", "pgvector",
+  "FastAPI", "MLflow", "Docker", "Kubernetes", "Azure",
+  "AWS", "vLLM", "Gemini", "RAG", "SHAP",
+  "tree-sitter", "Streamlit", "Power BI",
 ];
-
-function Dot() {
-  return (
-    <span className="w-1 h-1 rounded-full bg-[color:var(--border-strong)] flex-shrink-0 mx-4 self-center" />
-  );
-}
 
 export default function Marquee() {
   return (
-    <div className="border-t border-b border-[color:var(--border)] py-5 overflow-hidden">
-      <MarqueeUI pauseOnHover className="[--duration:40s] [--gap:0px]">
-        {items.map((item) => (
-          <div key={item.text} className="inline-flex items-center gap-0">
-            <div className="flex items-baseline gap-2 px-4">
-              <span className="font-display text-lg md:text-xl text-[color:var(--fg-dim)] whitespace-nowrap select-none">
-                {item.text}
-              </span>
-              <span className="text-[10px] font-mono tracking-widest uppercase text-[color:var(--muted)] whitespace-nowrap">
-                {item.sub}
-              </span>
-            </div>
-            <Dot />
+    <div className="border-t border-b border-[color:var(--border)] py-6 overflow-hidden bg-[color:var(--bg-surface)]/40">
+      <div className="max-w-6xl mx-auto px-6 md:px-10 mb-3 flex items-center justify-between">
+        <div className="text-[10px] font-mono uppercase tracking-[0.24em] text-[color:var(--muted)]">
+          Stack in production
+        </div>
+        <div className="text-[10px] font-mono uppercase tracking-[0.24em] text-[color:var(--muted)] hidden sm:block">
+          {tech.length}+ tools
+        </div>
+      </div>
+      <MarqueeUI pauseOnHover className="[--duration:60s] [--gap:0px]">
+        {tech.map((t) => (
+          <div key={t} className="inline-flex items-center">
+            <span className="font-display font-medium text-lg md:text-2xl text-[color:var(--fg)] whitespace-nowrap select-none tracking-[-0.01em] px-5">
+              {t}
+            </span>
+            <span className="w-1 h-1 rounded-full bg-[color:var(--accent)] flex-shrink-0" />
           </div>
         ))}
       </MarqueeUI>
