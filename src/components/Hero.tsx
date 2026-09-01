@@ -6,7 +6,24 @@ import { personal, stats } from "@/lib/data";
 import NeuralField from "@/components/NeuralField";
 import SplitText from "@/components/SplitText";
 import { MagneticButton } from "@/components/MagneticButton";
+import { NumberTicker } from "@/components/ui/number-ticker";
 import { useEffect, useState } from "react";
+
+function AnimatedStat({ value }: { value: string }) {
+  // Parse numeric prefix, keep suffix (M, K, +, etc.)
+  const match = value.match(/^([~<>]?)([\d.,]+)(.*)$/);
+  if (!match) return <>{value}</>;
+  const [, prefix, num, suffix] = match;
+  const decimals = num.includes(".") ? num.split(".")[1].length : 0;
+  const numeric = parseFloat(num.replace(/,/g, ""));
+  return (
+    <span>
+      {prefix}
+      <NumberTicker value={numeric} decimalPlaces={decimals} />
+      {suffix}
+    </span>
+  );
+}
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -164,8 +181,8 @@ export default function Hero() {
                 i < stats.length - 1 ? "border-r border-[color:var(--border)]" : ""
               }`}
             >
-              <span className="font-display font-semibold text-2xl md:text-3xl text-[color:var(--fg)]">
-                {s.value}
+              <span className="font-display font-semibold text-2xl md:text-3xl text-[color:var(--fg)] tabular-nums">
+                <AnimatedStat value={s.value} />
               </span>
               <span className="text-xs text-[color:var(--muted)] leading-snug">{s.label}</span>
             </div>
