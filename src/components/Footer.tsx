@@ -7,7 +7,6 @@ const links = [
   { label: "GitHub",   href: personal.github,                   external: true  },
   { label: "LinkedIn", href: personal.linkedin,                  external: true  },
   { label: "Email",    href: `mailto:${personal.email}`,         external: false },
-  { label: "Resume",   href: personal.resume,                    external: true  },
 ];
 
 export default function Footer() {

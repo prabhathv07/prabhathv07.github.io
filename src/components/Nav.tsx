@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { personal } from "@/lib/data";
 import ThemeToggle from "@/components/ThemeToggle";
 
@@ -55,15 +55,6 @@ export default function Nav() {
         {/* Actions */}
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <a
-            href={personal.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cursor-label="Resume"
-            className="hidden sm:inline-flex items-center gap-1 px-3.5 py-1.5 rounded-lg text-xs font-medium bg-[color:var(--fg)] text-[color:var(--bg)] hover:opacity-85 transition-opacity"
-          >
-            Resume <ArrowUpRight size={10} />
-          </a>
           <button
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
@@ -87,14 +78,6 @@ export default function Nav() {
               {l.label}
             </a>
           ))}
-          <a
-            href={personal.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium bg-[color:var(--fg)] text-[color:var(--bg)] w-fit"
-          >
-            Resume <ArrowUpRight size={11} />
-          </a>
         </div>
       )}
     </header>

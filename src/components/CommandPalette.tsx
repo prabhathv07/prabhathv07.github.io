@@ -11,7 +11,6 @@ const commands = [
   { id: "skills",   label: "Stack",       sub: "Technologies and tools",     href: "#skills",         icon: "◎" },
   { id: "journey",  label: "Experience",  sub: "Scale AI · HCL Tech · NJIT", href: "#experience",     icon: "◌" },
   { id: "contact",  label: "Contact",     sub: "Let's talk",                 href: "#contact",        icon: "◍" },
-  { id: "resume",   label: "Resume",      sub: "Download my CV",             href: personal.resume,   icon: "↓",  external: true },
   { id: "github",   label: "GitHub",      sub: personal.githubLabel,         href: personal.github,   icon: "⌥",  external: true },
   { id: "linkedin", label: "LinkedIn",    sub: personal.linkedinLabel,       href: personal.linkedin, icon: "⌘",  external: true },
   { id: "email",    label: "Email",       sub: personal.email,               href: `mailto:${personal.email}`, icon: "✉", external: true },

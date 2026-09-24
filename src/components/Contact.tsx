@@ -74,15 +74,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              <a
-                href={personal.resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor-label="Download"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[color:var(--accent)] text-white text-sm font-medium hover:opacity-90 transition-opacity"
-              >
-                Download Resume <ArrowUpRight size={13} />
-              </a>
             </div>
           </BlurFade>
 

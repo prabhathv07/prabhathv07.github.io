@@ -11,7 +11,6 @@ export const personal = {
   linkedinLabel: "in/prabhath-vipparthi",
   github: "https://github.com/prabhathv07",
   githubLabel: "@prabhathv07",
-  resume: "/resume.pdf",
   status: "Available immediately · Onsite · Hybrid · Remote · Anywhere in the US",
 };
 
@@ -90,6 +89,13 @@ export const experiences: Experience[] = [
   },
 ];
 
+export type CaseStudy = {
+  problem: string;
+  architecture: string[];
+  solution: string[];
+  results: string[];
+};
+
 export type Project = {
   number: string;
   title: string;
@@ -102,6 +108,7 @@ export type Project = {
   github?: string;
   demo?: string;
   featured?: boolean;
+  caseStudy?: CaseStudy;
 };
 
 export const projects: Project[] = [
@@ -122,6 +129,28 @@ export const projects: Project[] = [
     footer: "351-test suite · 100% accuracy on held-out set",
     github: "https://github.com/prabhathv07/AI_Digital_Badge_Classification",
     featured: true,
+    caseStudy: {
+      problem:
+        "NJIT's LDI team was manually classifying every micro-credential submission against a 3-dimension institutional taxonomy — subject area, learning outcome type, and Bloom's level. Slow, inconsistent between reviewers, and impossible to audit six months later. They needed AI-assist, not AI-replace: fast enough to help, transparent enough to challenge.",
+      architecture: [
+        "Ingest layer accepts OBv3 JSON, guided form submissions, and free-text uploads through FastAPI endpoints",
+        "4-layer text extraction: 130+ lexicon phrase patterns → 44 regex rules → spaCy Bloom's taxonomy matcher → LLM stub",
+        "3-stage deterministic rule engine (19 rules total) maps extracted signals to taxonomy dimensions",
+        "Every decision written to an immutable audit log with plain-English rationale",
+        "React/Vite reviewer UI for human-in-the-loop overrides; SQLite persistence; GitHub Actions CI",
+      ],
+      solution: [
+        "Chose deterministic rules over end-to-end LLM for the classification core so every prediction is inspectable and reproducible",
+        "Kept the LLM stub as a fallback for edge cases the rules don't cover — never as the primary path",
+        "Built the audit log first, before the models, because that's what the compliance team needed to sign off",
+        "351-test suite covering unit, integration, and end-to-end paths — every rule change re-validates against a held-out set",
+      ],
+      results: [
+        "100% accuracy on 20 real-world held-out submissions across all three dimensions",
+        "Every classification comes with a decision trace a non-technical reviewer can read",
+        "Human override workflow captured so future model iterations learn from corrections",
+      ],
+    },
   },
   {
     number: "02",
@@ -147,6 +176,29 @@ export const projects: Project[] = [
     footer: "Live on Render",
     github: "https://github.com/prabhathv07/finsight",
     featured: true,
+    caseStudy: {
+      problem:
+        "I wanted a pre-market brief that read like it was written for me — not a generic newsletter. Something that ingested my watchlist every morning, computed the indicators I actually use (RSI, moving averages), and turned raw numbers into a paragraph of context. And it had to be cheap to run, because I wasn't paying $50/month for it.",
+      architecture: [
+        "GitHub Actions cron triggers weekday morning at market open",
+        "FastAPI service pulls ~130 symbols, computes RSI + moving-average indicators",
+        "Gemini 2.5 Flash generates per-symbol commentary from the indicator payload",
+        "Everything persists to PostgreSQL with pgvector — briefings, embeddings, subscriber list",
+        "Resend delivers email to confirmed subscribers",
+        "Separate RAG endpoint: user question → embed → pgvector similarity search → cited answer",
+      ],
+      solution: [
+        "Chose Gemini 2.5 Flash over larger models — cheaper, fast enough for the batch, quality was fine for structured commentary",
+        "pgvector instead of a dedicated vector DB — one Postgres, one connection pool, one thing to monitor",
+        "Confirmed opt-in only. No spam list, no scraping — real subscribers with an unsubscribe link",
+        "Inline date citations on RAG answers so users can trace claims back to specific briefings",
+      ],
+      results: [
+        "Running every weekday since launch, ~130 symbols per run, live on Render",
+        "68 automated tests covering the ingest → commentary → email pipeline",
+        "RAG layer answers plain-English questions over the full briefing history",
+      ],
+    },
   },
   {
     number: "03",
@@ -172,6 +224,29 @@ export const projects: Project[] = [
     footer: "30k files → 5,791 seeds → 448 pairs",
     github: "https://github.com/prabhathv07/StarCoder2-Self-Alignment-Pipeline",
     featured: true,
+    caseStudy: {
+      problem:
+        "The StarCoder2 paper describes SelfOSSInstruct — using a model to bootstrap its own instruction-tuning dataset from raw source code. I wanted to reproduce it end-to-end for TypeScript on modest hardware (single T4 GPU), and understand what actually holds the pipeline together vs. what the paper glosses over.",
+      architecture: [
+        "The Stack v2 as raw source: 30,000 TypeScript files sampled",
+        "tree-sitter AST parser extracts individual function definitions",
+        "TypeScript compiler type-checks each function — only type-safe seeds survive (5,791 remain)",
+        "S→C→I→R chain: Seed → Concepts → Instructions → Responses, each stage a separate vLLM inference batch",
+        "StarCoder2-3B running via vLLM (batch size 32) for throughput on the T4",
+        "Model-based quality filter on final pairs — 448 kept from the raw generation",
+      ],
+      solution: [
+        "Chose type-checking as the seed filter — cheap, deterministic, catches the noise before you spend GPU on it",
+        "vLLM over vanilla transformers for the inference loop — 3× throughput on the same hardware",
+        "Kept each pipeline stage independently resumable; a T4 crash at stage 3 doesn't re-run stages 1 and 2",
+        "Model-based quality scoring so the final dataset filters itself rather than requiring manual review",
+      ],
+      results: [
+        "448 complete instruction-response pairs from 5,791 type-checked seeds",
+        "Full pipeline reproducible on a single T4 GPU (~$0.35/hour)",
+        "Pattern generalizes to any typed language with an AST parser + type checker",
+      ],
+    },
   },
   {
     number: "04",
@@ -190,6 +265,29 @@ export const projects: Project[] = [
     footer: "5.97M rows · medallion architecture",
     github: "https://github.com/prabhathv07/nyc-taxi-pipeline",
     featured: true,
+    caseStudy: {
+      problem:
+        "Two months of NYC TLC Yellow Taxi trips — 5.97M rows of real fleet data. The point wasn't the analysis (Manhattan makes most of the revenue, no surprise); it was building a pipeline that could actually be trusted. Something with tests, lineage, and a warehouse layer, not just a notebook full of pandas.",
+      architecture: [
+        "Bronze: raw Parquet files from TLC dropped into object storage",
+        "Silver: PySpark cleaning — nulls, outliers, timezone alignment, fare validation",
+        "Gold: dbt models building trip facts + zone dimensions, materialised to DuckDB",
+        "23 dbt data-quality tests running as part of every build",
+        "Airflow DAG orchestrates the whole thing on a daily schedule",
+        "Streamlit dashboard reads directly from DuckDB for exploratory views",
+      ],
+      solution: [
+        "Medallion architecture on purpose — makes each layer's contract obvious, and lets one layer break without corrupting the others",
+        "DuckDB as the warehouse instead of Snowflake/BigQuery — this is a personal project, DuckDB is free and 10× fast enough for 5M rows",
+        "dbt tests over hand-written SQL checks — declarative, self-documenting, break the build when they fail",
+        "Airflow instead of cron so the DAG's failure modes are inspectable",
+      ],
+      results: [
+        "5.44M clean trips after silver-layer filtering (out of 5.97M raw)",
+        "23 data-quality tests pass on every daily run",
+        "Manhattan drives 75% of total revenue ($111.9M of $149.1M)",
+      ],
+    },
   },
   {
     number: "05",

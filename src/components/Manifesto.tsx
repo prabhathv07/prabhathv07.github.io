@@ -56,29 +56,37 @@ export default function Manifesto() {
               </h2>
               <div className="space-y-4 text-base text-[color:var(--fg-dim)] leading-[1.7]">
                 <p>
-                  I'm a Data Scientist and AI Engineer with 4 years of experience building
-                  production ML systems across enterprise and AI-native environments.
+                  My path into ML started at HCL Tech, sitting between business
+                  stakeholders and the modelling team &mdash; turning &ldquo;we&rsquo;re
+                  losing customers&rdquo; into 30+ features, a Random Forest with
+                  cross-validated ROC-AUC, and a Tableau dashboard the ops team could
+                  actually read. Three years of that taught me the boring truth of
+                  production ML: the model is 20% of the work.
                 </p>
                 <p>
-                  Currently at{" "}
-                  <strong className="text-[color:var(--fg)] font-medium">Scale AI</strong> as
-                  an Applied AI Engineer — I prepare training datasets, engineer ML features,
-                  build classification models, and implement embedding-based retrieval
-                  workflows that reduce manual review effort by 25%.
+                  At{" "}
+                  <strong className="text-[color:var(--fg)] font-medium">Scale AI</strong>{" "}
+                  I&rsquo;m closer to the model itself &mdash; classification models with
+                  threshold tuning for minority-class recall, embedding retrieval over
+                  Hugging Face transformers, and PySpark pipelines that got 28% faster
+                  once I stopped shuffling data unnecessarily. The tools change but the
+                  loop is the same: measure, ship, watch, fix.
                 </p>
                 <p>
-                  Before Scale AI, I spent over 3 years at{" "}
-                  <strong className="text-[color:var(--fg)] font-medium">HCL Tech</strong>{" "}
-                  building churn prediction and demand forecasting models for enterprise
-                  clients — improving high-risk recall by 18% and cutting forecast error
-                  by approximately 15%.
+                  Outside work, I ship things end-to-end. A pre-market briefing platform
+                  running every weekday on ~130 symbols. A 5.97M-row NYC taxi pipeline
+                  with 23 data-quality tests. A StarCoder2 self-alignment pipeline that
+                  distilled 30k TypeScript files into 448 instruction-response pairs.
+                  All on GitHub, all with the tests.
                 </p>
                 <p>
-                  I'm completing my{" "}
+                  I&rsquo;m finishing my{" "}
                   <strong className="text-[color:var(--fg)] font-medium">
                     MS in Data Science at NJIT
                   </strong>{" "}
-                  (GPA 3.7, May 2026) and actively looking for my next full-time role.
+                  this May (GPA 3.7) and looking for the next full-time role &mdash;
+                  data scientist, AI engineer, ML engineer, whichever title the team uses
+                  for &ldquo;this person owns the ML system end-to-end.&rdquo;
                 </p>
               </div>
             </div>
